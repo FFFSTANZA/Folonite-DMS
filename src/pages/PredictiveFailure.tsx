@@ -1,7 +1,6 @@
 import { useGlobalData } from '@/context/DataContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { AlertTriangle, Activity, TrendingDown, Zap } from 'lucide-react';
 
 export default function PredictiveFailure() {
@@ -158,10 +157,9 @@ export default function PredictiveFailure() {
                           {health.healthScore}/100
                         </span>
                       </div>
-                      <div className="relative">
-                        <Progress value={health.healthScore} className="h-3" />
+                      <div className="relative h-3 w-full overflow-hidden rounded-full bg-muted">
                         <div
-                          className={`absolute top-0 left-0 h-3 rounded-full transition-all ${getProgressColor(health.healthScore)}`}
+                          className={`absolute top-0 left-0 h-full rounded-full transition-all ${getProgressColor(health.healthScore)}`}
                           style={{ width: `${health.healthScore}%` }}
                         />
                       </div>
