@@ -1,9 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Activity, DollarSign, TrendingUp, AlertTriangle, Zap, BarChart3 } from 'lucide-react';
+import { Activity, DollarSign, TrendingUp, AlertTriangle, Zap, BarChart3, Upload } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { UniversalUpload } from '@/components/upload/UniversalUpload';
 
 export default function DashboardHome() {
   // Mock data for demonstration
@@ -35,16 +34,25 @@ export default function DashboardHome() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
-      <div>
-        <h1 className="text-4xl font-bold tracking-tight">Dashboard Overview</h1>
-        <p className="text-muted-foreground mt-2">
-          Real-time insights into your EV charging operations
-        </p>
+      {/* Header with Import Button */}
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-4xl font-bold tracking-tight">Dashboard Overview</h1>
+          <p className="text-muted-foreground mt-2">
+            Real-time insights into your EV charging operations
+          </p>
+        </div>
+        <Button 
+          asChild
+          size="lg"
+          className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-lg gap-2"
+        >
+          <Link to="/data-import">
+            <Upload className="h-5 w-5" />
+            Import Data
+          </Link>
+        </Button>
       </div>
-
-      {/* Universal Upload Section */}
-      <UniversalUpload />
 
       {/* Top Widgets - Large Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

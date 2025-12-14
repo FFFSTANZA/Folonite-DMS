@@ -1,4 +1,5 @@
 import DashboardHome from './pages/DashboardHome';
+import DataImport from './pages/DataImport';
 import FaultDiagnosis from './pages/FaultDiagnosis';
 import CostAnalysis from './pages/CostAnalysis';
 import Analyzer from './pages/Analyzer';
@@ -20,6 +21,12 @@ const routes: RouteConfig[] = [
     path: '/',
     component: DashboardHome,
     visible: true
+  },
+  {
+    name: 'Data Import',
+    path: '/data-import',
+    component: DataImport,
+    visible: false
   },
   {
     name: 'Fault Diagnosis',
