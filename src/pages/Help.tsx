@@ -44,7 +44,7 @@ export default function Help() {
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Help & Documentation</h1>
         <p className="text-muted-foreground mt-2">
-          Learn how to use FoloCharge effectively
+          Learn how to use Folonite DMS effectively
         </p>
       </div>
 
@@ -55,7 +55,7 @@ export default function Help() {
             <FileText className="h-5 w-5 text-primary" />
             Quick Start Guide
           </CardTitle>
-          <CardDescription>Get started with FoloCharge in 3 simple steps</CardDescription>
+          <CardDescription>Get started with Folonite DMS in 3 simple steps</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex gap-4">
@@ -76,7 +76,7 @@ export default function Help() {
             <div>
               <h3 className="font-semibold">Review Analysis</h3>
               <p className="text-sm text-muted-foreground mt-1">
-                FoloCharge automatically processes your data and displays insights, faults, and recommendations
+                Folonite DMS automatically processes your data and displays insights, faults, and recommendations
               </p>
             </div>
           </div>
@@ -101,7 +101,7 @@ export default function Help() {
             <HelpCircle className="h-5 w-5 text-primary" />
             Module Guides
           </CardTitle>
-          <CardDescription>Detailed information about each FoloCharge module</CardDescription>
+          <CardDescription>Detailed information about each Folonite DMS module</CardDescription>
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">
@@ -194,7 +194,7 @@ export default function Help() {
       <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.2s' }}>
         <CardHeader>
           <CardTitle>EV Charging Terms</CardTitle>
-          <CardDescription>Common terminology used in FoloCharge</CardDescription>
+          <CardDescription>Common terminology used in Folonite DMS</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2">
@@ -214,7 +214,7 @@ export default function Help() {
       <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.3s' }}>
         <CardHeader>
           <CardTitle>Supported File Formats</CardTitle>
-          <CardDescription>Requirements for uploading data to FoloCharge</CardDescription>
+          <CardDescription>Requirements for uploading data to Folonite DMS</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>

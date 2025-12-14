@@ -46,7 +46,7 @@ export default function About() {
   return (
     <div className="space-y-8 animate-fade-in">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight">About FoloCharge</h1>
+        <h1 className="text-4xl font-bold tracking-tight">About Folonite DMS</h1>
         <p className="text-muted-foreground mt-2">
           Smarter EV Operations for India — No Setup, Just Upload.
         </p>
@@ -60,14 +60,14 @@ export default function About() {
               <Zap className="h-7 w-7" />
             </div>
             <div>
-              <CardTitle className="text-2xl">FoloCharge</CardTitle>
-              <CardDescription className="text-base">Enterprise EV Charging Operations Platform</CardDescription>
+              <CardTitle className="text-2xl">Folonite DMS</CardTitle>
+              <CardDescription className="text-base">Diagnostic Management System for EV Charging Operations</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground">
-            FoloCharge is a comprehensive diagnostic and analytics platform designed specifically for Indian EV charging station operators. 
+            Folonite DMS is a comprehensive diagnostic and analytics platform designed specifically for Indian EV charging station operators. 
             Our mission is to help you maximize uptime, optimize revenue, and prevent failures before they happen.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -95,7 +95,7 @@ export default function About() {
       <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.2s' }}>
         <CardHeader>
           <CardTitle>Key Features</CardTitle>
-          <CardDescription>What makes FoloCharge the best choice for EV operators</CardDescription>
+          <CardDescription>What makes Folonite DMS the best choice for EV operators</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -178,7 +178,7 @@ export default function About() {
 
       {/* Version Info */}
       <div className="text-center text-sm text-muted-foreground animate-slide-up" style={{ animationDelay: '0.5s' }}>
-        <p>FoloCharge v1.0 • 2025 • Made for Indian EV Operators</p>
+        <p>Folonite DMS v1.0 • 2025 • Made for Indian EV Operators</p>
       </div>
     </div>
   );

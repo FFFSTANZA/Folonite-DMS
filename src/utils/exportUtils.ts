@@ -11,7 +11,7 @@ export function exportToPDF(
   const doc = new jsPDF();
 
   doc.setFontSize(20);
-  doc.text('FoloCharge Fault Diagnosis Report', 14, 20);
+  doc.text('Folonite DMS Fault Diagnosis Report', 14, 20);
 
   doc.setFontSize(10);
   doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 28);
@@ -138,7 +138,7 @@ export function exportRecommendationsToPDF(recommendations: any[]): void {
   const doc = new jsPDF();
 
   doc.setFontSize(20);
-  doc.text('FoloCharge Business Recommendations', 14, 20);
+  doc.text('Folonite DMS Business Recommendations', 14, 20);
 
   doc.setFontSize(10);
   doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 28);
@@ -215,7 +215,7 @@ export function exportFaultsToPDF(faults: FaultAnalysis[]): void {
   const doc = new jsPDF();
 
   doc.setFontSize(20);
-  doc.text('FoloCharge Fault Diagnosis Report', 14, 20);
+  doc.text('Folonite DMS Fault Diagnosis Report', 14, 20);
 
   doc.setFontSize(10);
   doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 28);
@@ -280,7 +280,7 @@ export function exportCostAnalysisToPDF(costData: any): void {
   const doc = new jsPDF();
 
   doc.setFontSize(20);
-  doc.text('FoloCharge Cost Analysis Report', 14, 20);
+  doc.text('Folonite DMS Cost Analysis Report', 14, 20);
 
   doc.setFontSize(10);
   doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 28);
