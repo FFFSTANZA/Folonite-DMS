@@ -38,7 +38,8 @@ EV charging station owners, operators, and decision-makers in the Indian market\
 - Smooth transitions between sections
 
 ---
-\n## 3. Dashboard Home (Executive Summary)
+
+## 3. Dashboard Home (Executive Summary)
 
 ### 3.1 Top Widgets (Large Cards)
 Four primary metric cards displaying:
@@ -51,7 +52,8 @@ Four primary metric cards displaying:
 - **Usage Trend Graph**: Line chart showing last 7 days activity
 - **Fault Category Distribution**: Pie chart with fault type breakdown
 - **Sites Needing Immediate Attention**: Alert list with actionable items
-\n### 3.3 Widget Design Requirements
+
+### 3.3 Widget Design Requirements
 - Color-coded by severity and status
 - Bold typography for key numbers
 - Subtle animations: fade-in on load, slide-up transitions, hover shadows
@@ -62,14 +64,14 @@ Four primary metric cards displaying:
 \n## 4. Fault Diagnosis Module
 
 ### 4.1 Log Upload & Parsing
-- Support file formats: CSV, JSON, TXT\n- Drag-and-drop upload zone with hover state
+- Support file formats: CSV, JSON, TXT
+- Drag-and-drop upload zone with hover state
 - 'Load Indian Sample Data' button for instant testing
 - Auto-extract key fields: errorCode, timestamp, connectorId, meterValue, temperature, voltage/current, OCPP status, transactionStopReason
 
 ### 4.2 Fault Classification Engine
 Rule-based categorization into11 fault types:
-- Overcurrent\n- Overvoltage
-- Low grid voltage
+- Overcurrent\n- Overvoltage\n- Low grid voltage
 - Overheating
 - BMS communication mismatch
 - OCPP network disconnect
@@ -99,7 +101,8 @@ For each detected fault:
 ### 5.1 Downtime Cost Calculator (INR)
 - Formula: avg_sessions_per_day × avg_ticket_size_in_INR × (downtime_hours/24)
 - Default parameters (user-editable with inline validation):
-  - Average Session Value: ₹120\n  - Average Sessions per Day: 14
+  - Average Session Value: ₹120
+  - Average Sessions per Day: 14
 \n### 5.2 Display Metrics
 - Revenue lost today\n- Revenue lost this month
 - Top 5 costliest faults ranking with bar chart
@@ -126,7 +129,7 @@ Trigger alerts based on:
 
 ### 6.2 Risk Classification
 - ⚠️ **Medium Failure Risk** (Orange badge): Single pattern, moderate frequency
--🔥 **High Failure Risk** (Orange badge): Multiple patterns or high frequency
+- 🔥 **High Failure Risk** (Orange badge): Multiple patterns or high frequency
 - 🚨 **Critical — Failure Imminent** (Red badge): Severe patterns with very high frequency
 \n### 6.3 Charger Health Score
 - 0-100 scale displayed as circular progress indicator with color gradient
@@ -160,7 +163,8 @@ For each at-risk charger:
 - Action buttons for maintenance scheduling
 
 ---
-\n## 7. Site Analytics Module
+
+## 7. Site Analytics Module
 
 ### 7.1 CSV Upload\n- Single CSV file upload with drag-and-drop support
 - Required fields: siteId, chargerId, connectorId, energy_kWh, sessionDurationMin, tariffINR, revenueINR, startTime, stopTime
@@ -187,9 +191,9 @@ Rule-based business suggestions:
 - Grid issue warnings for low energy output
 
 ---
+\n## 8. Charger Analytics Module
 
-## 8. Charger Analytics Module
-\n### 8.1 Charger-Level Performance Analysis
+### 8.1 Charger-Level Performance Analysis
 Categorization:\n- **Good Performer** (Green badge): High utilization and revenue
 - **Low Performer** (Yellow badge): Below-average metrics
 - **Dead Chargers** (Red badge): 0–1 sessions per day
@@ -208,38 +212,64 @@ Categorization:\n- **Good Performer** (Green badge): High utilization and revenu
 
 ---
 
-## 9. Help & Documentation Features
+## 9. Context-Aware Intelligence Engine
+\n### 9.1 Overview
+Folonite DMS goes beyond basic fault detection by applying context-aware intelligence to every charger event. Instead of treating faults as isolated incidents, the system continuously analyzes patterns, frequency, and sensor behavior to understand the true operational risk.
 
-### 9.1 Contextual Tooltips
+### 9.2 Recurrence-Based Severity Escalation
+- Automatically escalates fault severity when the same fault repeats multiple times on the same charger within a short time window
+- Reflects real-world urgency by adjusting priority based on recurrence patterns
+- Time window analysis to identify critical fault clusters
+
+### 9.3 Sensor-Driven Severity Scaling
+- Live sensor readings (temperature, voltage, current) evaluated against safe operating thresholds
+- Critical conditions flagged with higher priority based on sensor data
+- Real-time threshold monitoring for proactive risk assessment
+- Automatic severity adjustment when sensor values exceed safe limits
+
+### 9.4 Dynamic Charger Health Scoring
+- Rolling health score assigned to each charger\n- Score degrades based on fault impact and frequency\n- At-a-glance indicator of asset reliability for operators
+- Continuous score updates reflecting current operational status
+- Integration with predictive failure module for comprehensive risk assessment
+
+### 9.5 Intelligence Engine Benefits
+- Smarter decision-making through contextual analysis
+- Reduced false alarms by understanding fault patterns
+- Prioritized maintenance actions based on true operational risk
+- Enhanced asset reliability tracking
+- Proactive risk mitigation through continuous monitoring\n
+---
+
+## 10. Help & Documentation Features
+
+### 10.1 Contextual Tooltips
 One-line definitions for Indian EV terms:
 - **OCPP**: Open Charge Point Protocol for charger communication
 - **BMS**: Battery Management System in electric vehicles
 - **Tariff**: Charging rate per kWh in INR
 - **kWh**: Kilowatt-hour, unit of energy delivered
 - **Session**: Single charging transaction from start to stop
-
-### 9.2 Help Section
+\n### 10.2 Help Section
 - Quick start guide\n- Module-specific documentation
-- FAQ section
-- Sample data download links
+- FAQ section\n- Sample data download links
 - Contact support information
 
 ---
 
-## 10. Export Capabilities
+## 11. Export Capabilities
 
-### 10.1 Export Formats
+### 11.1 Export Formats
 - PDF: Formatted reports with charts and tables
 - CSV: Raw data tables
 - Excel (XLSX): Structured workbooks with multiple sheets
-\n### 10.2 Exportable Content
+\n### 11.2 Exportable Content
 - Fault analysis reports\n- Cost analysis summaries
 - Predictive failure alerts
 - Site performance reports
 - Charger analytics data
 - Visual charts and graphs
 
-### 10.3 Export Controls
+### 11.3 Export Controls
 - Export buttons positioned consistently across modules
 - Batch export option for multiple reports
 - Custom date range selection for exports
@@ -247,42 +277,42 @@ One-line definitions for Indian EV terms:
 
 ---
 
-## 11. Technical Architecture
+## 12. Technical Architecture
 
-### 11.1 Data Processing\n- Client-side processing only
-- Session-based temporary data handling
+### 12.1 Data Processing\n- Client-side processing only\n- Session-based temporary data handling
 - No backend database storage
 - No user authentication system
 - All processing runs in memory
 - Data cleared after session ends
 
-### 11.2 Workflow
+### 12.2 Workflow
 Upload → Process → Show Insights → Export
 
-### 11.3 Runtime Error Fix
+### 12.3 Runtime Error Fix
 - Issue: 'Cannot read properties of null (reading useRef)' in BrowserRouter
 - Solution: Ensure React context is properly initialized before BrowserRouter renders. Verify React and React-DOM versions compatibility (both 18.3.1). Wrap BrowserRouter in proper React root element with no null references in parent components.
 - Implementation: Use ReactDOM.createRoot correctly and ensure BrowserRouter renders after React context initialization.
 
 ---
 
-## 12. Branding & Visual Identity
+## 13. Branding & Visual Identity
 
-### 12.1 Brand Elements
+### 13.1 Brand Elements
 - **Name**: FoloCharge
 - **Logo**: Simple electric bolt + F text combination
-- **Footer Credit**: Built by Folonite\n\n### 12.2 Brand Application
-Consistent branding across:\n- Page headers
+- **Footer Credit**: Built by Folonite
+\n### 13.2 Brand Application
+Consistent branding across:
+- Page headers
 - Tooltips
-- Buttons
-- Loading screens
+- Buttons\n- Loading screens
 - Export documents
 - Error messages
 
 ---
 
-## 13. Design Style\n
-### 13.1 Color Scheme
+## 14. Design Style\n
+### 14.1 Color Scheme
 - **Primary**: Electric Blue (#007BFF) for main actions and highlights
 - **Background**: Midnight Black (#0A0A0A) for sidebar and headers
 - **Content Background**: Pure White (#FFFFFF) for main content areas
@@ -293,81 +323,82 @@ Consistent branding across:\n- Page headers
   - Red (#DC2626): Critical, Dead Chargers
   - Blue (#007BFF): Info, General alerts
 
-### 13.2 Visual Elements
-- **Card Layout**: Spacious cards with subtle shadows (0 2px 8px rgba(0,0,0,0.1)),12px rounded corners\n- **Typography**: High-contrast, bold headings (24-32px), readable body text (14-16px), large numbers for metrics (36-48px)
+### 14.2 Visual Elements
+- **Card Layout**: Spacious cards with subtle shadows (0 2px 8px rgba(0,0,0,0.1)),12px rounded corners
+- **Typography**: High-contrast, bold headings (24-32px), readable body text (14-16px), large numbers for metrics (36-48px)
 - **Iconography**: Consistent icon set for all modules and actions,24px standard size
 - **Animations**: Fade-in on page load (300ms), slide-up for cards (400ms), hover shadows with smooth transitions (200ms), smooth page transitions between modules
 - **Spacing**: Consistent 16px/24px/32px grid system, generous whitespace for readability
 
-### 13.3 Layout Structure
-- **Sidebar**: Fixed left vertical navigation (240px width), collapsible on smaller screens
+### 14.3 Layout Structure\n- **Sidebar**: Fixed left vertical navigation (240px width), collapsible on smaller screens
 - **Main Content**: Full-width content area with max-width 1400px, centered alignment
 - **Dashboard Grid**: Responsive grid layout (4 columns on desktop, 2 on tablet, 1 on mobile)
 - **Card Hierarchy**: Large cards for primary metrics, medium cards for secondary widgets, small cards for alerts
-
-### 13.4 Interactive Components
+\n### 14.4 Interactive Components
 - **Buttons**: Primary (Electric Blue), Secondary (outlined), Danger (Red for critical actions), all with hover and active states
 - **Input Fields**: Clean borders, focus states with blue outline, inline validation messages
 - **Tables**: Alternating row colors, sortable headers with icons, hover row highlighting
 - **Charts**: Interactive with hover tooltips, color-coded by category, smooth animations on load
 - **Badges**: Rounded pill shape, color-coded by severity, consistent sizing (24px height)
 
-### 13.5 Responsive Design
+### 14.5 Responsive Design
 - Full desktop experience (1920px+)
-- Tablet optimization (768px-1024px)\n- Collapsible sidebar on smaller screens
+- Tablet optimization (768px-1024px)
+- Collapsible sidebar on smaller screens
 - Stacked card layout on mobile
 - Touch-friendly interactive elements
 
 ---
 
-## 14. Key Features Summary
+## 15. Key Features Summary
 
-### 14.1 Unified Dashboard
+### 15.1 Unified Dashboard
 - Single seamless interface combining all four modules
 - Executive summary homepage with quick-glance insights
 - Left vertical sidebar navigation with collapsible sections
 - Consistent branding and visual hierarchy throughout
-
-### 14.2 Premium UI/UX
+\n### 15.2 Premium UI/UX
 - Enterprise-level design quality comparable to Datadog, Amplitude, ChargeLab
 - Clean, structured layout with spacious cards
 - High-contrast typography and bold numbers
 - Smooth animations and transitions
 - Comprehensive iconography\n- Contextual help tooltips
 
-### 14.3 Comprehensive Analytics
+### 15.3 Comprehensive Analytics
 - Fault diagnosis with 11 fault types
 - INR-based cost analysis
 - Predictive failure detection with health scoring
 - Multi-site revenue and utilization analysis
 - Charger-level performance categorization
 - Rule-based business recommendations
-\n### 14.4 Export & Reporting
+- Context-aware intelligence engine for smarter decision-making
+
+### 15.4 Export & Reporting
 - Multiple export formats (PDF, CSV, Excel)
 - Customizable report generation
 - Visual charts and graphs included
 - Batch export capabilities
-\n### 14.5 No-Setup Operation
+\n### 15.5 No-Setup Operation
 - No login required
-- No database storage\n- Client-side processing only
+- No database storage
+- Client-side processing only
 - Session-based data handling
 - Instant-use tool with sample data
 
 ---
 
-## 15. Version Information
-- **Current Version**: v1.0
-- **Built by**: Folonite
+## 16. Version Information
+- **Current Version**: v1.0\n- **Built by**: Folonite
 - **Platform**: Web-based SaaS
 - **Target Market**: Indian EV charging station operators
 \n---
 
-## 16. Vendor-Agnostic Log Format Detection (Autodetect Engine)
+## 17. Vendor-Agnostic Log Format Detection (Autodetect Engine)
 
-### 16.1 Purpose
+### 17.1 Purpose
 Automatically detect and normalize log formats from ANY EV charger vendor in India without requiring manual user configuration.
 
-### 16.2 Supported Vendors & Formats
+### 17.2 Supported Vendors & Formats
 The autodetection engine supports logs from:
 - Delta\n- ABB
 - Exicom
@@ -381,62 +412,63 @@ The autodetection engine supports logs from:
 - JSON-based telemetry dumps
 - TXT console dumps
 
-### 16.3 Format Autodetection Logic
-\n#### 16.3.1 File Structure Detection
+### 17.3 Format Autodetection Logic
+\n####17.3.1 File Structure Detection
 - **CSV Header Matching**: Identify columns like eventType, meterValue, evseId\n- **JSON Key Recognition**: Detect keys such as connectorId, measurand, reason
 - **TXT Line Format Parsing**: Recognize patterns like [2024-12-0114:00:01] ERROR: ...
-\n#### 16.3.2 Vendor Signature Recognition
+\n#### 17.3.2 Vendor Signature Recognition
 Identify unique vendor identifiers:
 - 'EXICOM-CP'\n- 'ABB_ERR_'\n- 'DELTA:OCPP'\n- 'CHARGEZONE LOG BLOCK'
-- 'STQ_EVT'\n\n#### 16.3.3OCPP Event Pattern Recognition
+- 'STQ_EVT'\n\n#### 17.3.3OCPP Event Pattern Recognition
 Recognize standard OCPP events:
 - BootNotification
 - MeterValues
 - StatusNotification
 - Heartbeat
 - StartTransaction
-- StopTransaction\n\n### 16.4 Auto-Mapping Fields
-\n#### 16.4.1 Standard FoloCharge Fields
+- StopTransaction\n\n### 17.4 Auto-Mapping Fields
+\n#### 17.4.1 Standard FoloCharge Fields
 - timestamp
 - errorCode
-- connectorId\n- status
+- connectorId
+- status
 - voltage
 - current
 - meterValue
 - temperature
 - vendorErrorString
 - restartCount
-\n#### 16.4.2Vendor Field Mapping Examples
+\n#### 17.4.2Vendor Field Mapping Examples
 - Err_Code → errorCode
 - EVSE_ID → connectorId
 - Temp_C → temperature
 - Volt_R / Volt_S / Volt_T → voltage
-\n### 16.5 Validation Layer
-\n#### 16.5.1 Data Quality Checks
+\n### 17.5 Validation Layer
+\n#### 17.5.1 Data Quality Checks
 Detect and handle:\n- Missing timestamps
 - Corrupted timestamps
 - Invalid connector numbers
 - Empty lines
 - Broken JSON structures
-\n#### 16.5.2 Validation Warnings
+\n#### 17.5.2 Validation Warnings
 Display user-friendly messages:
 - '32 invalid entries were fixed automatically.'
 - 'Timestamp format normalized from vendor-specific to ISO 8601.'
 - 'Missing connector IDs assigned default values.'
 
-### 16.6 UI Integration
+### 17.6 UI Integration
 
-#### 16.6.1 Module Integration
+#### 17.6.1 Module Integration
 Autodetection applies to:
 - Fault Diagnoser
 - Predictive Failure\n- Cost Analysis
-\n#### 16.6.2 Detection Banner
+\n#### 17.6.2 Detection Banner
 Display small banner after file upload:
 - 'Vendor detected: ABB (OCPP 1.6J Pattern)'
 - 'Logs normalized for analysis.'
 - Color-coded by detection confidence (Green: High confidence, Yellow: Partial match, Orange: Manual review suggested)
 
-#### 16.6.3 Detection Details Panel (Optional)
+#### 17.6.3 Detection Details Panel (Optional)
 Collapsible panel showing:
 - Detected vendor name
 - Log format type
@@ -444,7 +476,7 @@ Collapsible panel showing:
 - Number of entries corrected
 - Field mapping summary
 
-### 16.7 Processing Workflow
+### 17.7 Processing Workflow
 1. User uploads log file (CSV/JSON/TXT)
 2. Autodetection engine analyzes file structure and content
 3. Vendor signature identified
@@ -454,7 +486,7 @@ Collapsible panel showing:
 7. Normalized data passed to analysis modules
 8. User proceeds with fault diagnosis, cost analysis, or predictive failure detection
 
-### 16.8 Technical Implementation
+### 17.8 Technical Implementation
 - Client-side processing only (no backend required)
 - Pattern matching algorithms for vendor detection
 - Field mapping dictionary for all supported vendors
@@ -462,7 +494,7 @@ Collapsible panel showing:
 - Real-time processing with progress indicator
 - Error handling for unsupported formats with user guidance
 
-### 16.9 Deliverables
+### 17.9 Deliverables
 - Vendor autodetection engine
 - Auto-field mapping system
 - Data normalizer

@@ -1,4 +1,4 @@
-export type SeverityLevel = 'Low' | 'Medium' | 'High';
+export type SeverityLevel = 'Low' | 'Medium' | 'High' | 'Critical';
 
 export type FaultType =
   | 'Overcurrent'
