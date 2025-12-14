@@ -87,7 +87,7 @@ export default function Analyzer() {
   };
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">{getPageTitle()}</h1>
         <p className="text-muted-foreground mt-2">{getPageDescription()}</p>
@@ -107,7 +107,7 @@ export default function Analyzer() {
 
       {summary && (
         <>
-          <section className="animate-slide-up">
+          <section className="">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold">Overview</h2>
               {recommendations.length > 0 && (
@@ -123,17 +123,17 @@ export default function Analyzer() {
             <AnalyticsSummaryCards summary={summary} />
           </section>
 
-          <Tabs value={getActiveTab()} className="w-full animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <Tabs value={getActiveTab()} className="w-full ">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="sites">Site View</TabsTrigger>
               <TabsTrigger value="chargers">Charger View</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="sites" className="mt-6 animate-slide-up">
+            <TabsContent value="sites" className="mt-6 ">
               <SiteAnalyticsTable sites={siteMetrics} />
             </TabsContent>
 
-            <TabsContent value="chargers" className="mt-6 animate-slide-up">
+            <TabsContent value="chargers" className="mt-6 ">
               <ChargerAnalyticsTable chargers={chargerMetrics} />
             </TabsContent>
           </Tabs>
@@ -148,7 +148,7 @@ export default function Analyzer() {
       )}
 
       {!isProcessing && !summary && (
-        <div className="text-center py-12 animate-slide-up">
+        <div className="text-center py-12 ">
           <p className="text-muted-foreground">
             Upload session data to begin analysis
           </p>

@@ -4,7 +4,7 @@ import { Upload, FileText, AlertCircle } from 'lucide-react';
 
 export default function DataImport() {
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Data Import</h1>
@@ -18,7 +18,7 @@ export default function DataImport() {
 
       {/* Information Cards */}
       <div className="grid gap-6 md:grid-cols-3">
-        <Card className="shadow-premium">
+        <Card className="">
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -45,7 +45,7 @@ export default function DataImport() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-premium">
+        <Card className="">
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -72,7 +72,7 @@ export default function DataImport() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-premium">
+        <Card className="">
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
@@ -101,7 +101,7 @@ export default function DataImport() {
       </div>
 
       {/* Help Section */}
-      <Card className="shadow-premium border-primary/20">
+      <Card className=" border-primary/20">
         <CardHeader>
           <CardTitle>Need Help?</CardTitle>
           <CardDescription>

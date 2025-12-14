@@ -40,7 +40,7 @@ export default function Help() {
   ];
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Help & Documentation</h1>
         <p className="text-muted-foreground mt-2">
@@ -49,7 +49,7 @@ export default function Help() {
       </div>
 
       {/* Quick Start Guide */}
-      <Card className="card-hover animate-slide-up">
+      <Card className="">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-primary" />
@@ -95,7 +95,7 @@ export default function Help() {
       </Card>
 
       {/* Module Guides */}
-      <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.1s' }}>
+      <Card className="">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HelpCircle className="h-5 w-5 text-primary" />
@@ -191,7 +191,7 @@ export default function Help() {
       </Card>
 
       {/* EV Terms Glossary */}
-      <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.2s' }}>
+      <Card className="">
         <CardHeader>
           <CardTitle>EV Charging Terms</CardTitle>
           <CardDescription>Common terminology used in Folonite DMS</CardDescription>
@@ -211,7 +211,7 @@ export default function Help() {
       </Card>
 
       {/* File Format Guide */}
-      <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.3s' }}>
+      <Card className="">
         <CardHeader>
           <CardTitle>Supported File Formats</CardTitle>
           <CardDescription>Requirements for uploading data to Folonite DMS</CardDescription>

@@ -84,23 +84,20 @@ export function Sidebar() {
       >
         <div className="flex h-full flex-col">
           {/* Logo & Branding */}
-          <div className="border-b border-border/40 p-6">
+          <div className="border-b p-6">
             <Link
               to="/"
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/30 transition-all duration-300" />
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <Zap className="h-6 w-6 text-white" fill="white" />
-                </div>
+              <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+                <Zap className="h-6 w-6 text-primary-foreground" fill="currentColor" />
               </div>
               <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+                <h1 className="text-xl font-semibold text-sidebar-foreground">
                   Folonite DMS
                 </h1>
-                <p className="text-[10px] text-muted-foreground font-medium tracking-wider">
+                <p className="text-[10px] text-sidebar-foreground/60 font-medium tracking-wide">
                   DIAGNOSTIC MANAGEMENT SYSTEM
                 </p>
               </div>
@@ -121,19 +118,13 @@ export function Sidebar() {
                         to={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                          'group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200',
+                          'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                           isActive
-                            ? 'bg-gradient-to-r from-primary to-accent text-white shadow-premium'
-                            : 'text-sidebar-foreground hover:bg-sidebar-hover hover:text-sidebar-foreground'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'text-sidebar-foreground hover:bg-sidebar-hover'
                         )}
                       >
-                        {isActive && (
-                          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
-                        )}
-                        <Icon className={cn(
-                          "h-5 w-5 flex-shrink-0 transition-transform duration-200",
-                          isActive ? "scale-110" : "group-hover:scale-110"
-                        )} />
+                        <Icon className="h-5 w-5 flex-shrink-0" />
                         <span>{item.title}</span>
                       </Link>
                     </TooltipTrigger>
@@ -151,24 +142,24 @@ export function Sidebar() {
             <Link
               to="/help"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-hover transition-smooth group"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-hover transition-colors"
             >
-              <HelpCircle className="h-4 w-4 group-hover:scale-110 transition-transform" />
+              <HelpCircle className="h-4 w-4" />
               <span>Help & Documentation</span>
             </Link>
             <Link
               to="/about"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-hover transition-smooth group"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-hover transition-colors"
             >
-              <Info className="h-4 w-4 group-hover:scale-110 transition-transform" />
+              <Info className="h-4 w-4" />
               <span>About Folonite DMS</span>
             </Link>
-            <div className="mt-4 px-3 pt-4 border-t border-border/40">
-              <p className="text-xs text-muted-foreground">
-                Built with ⚡ by <span className="font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Folonite</span>
+            <div className="mt-4 px-3 pt-4 border-t border-sidebar-hover">
+              <p className="text-xs text-sidebar-foreground/60">
+                Built with ⚡ by <span className="font-semibold text-sidebar-foreground">Folonite</span>
               </p>
-              <p className="text-[10px] text-muted-foreground mt-1">Version 1.0.0</p>
+              <p className="text-[10px] text-sidebar-foreground/40 mt-1">Version 1.0.0</p>
             </div>
           </div>
         </div>

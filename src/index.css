@@ -3,113 +3,107 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
-All colors MUST be HSL.
-*/
+/* Clean SaaS Design System - Professional & Minimal */
 
 @layer base {
   :root {
     --radius: 0.5rem;
     
-    /* Premium FoloCharge Theme - Light Mode */
-    --background: 220 13% 96%;
-    --foreground: 0 0% 4%;
+    /* Light Mode - Clean & Professional */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
+    --popover-foreground: 222 47% 11%;
     
-    /* Electric Blue Primary */
-    --primary: 211 100% 50%;
+    /* Professional Blue Primary */
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 211 100% 60%;
-    --primary-dark: 211 100% 40%;
     
-    /* Neon Cyan Accent */
-    --accent: 189 100% 51%;
-    --accent-foreground: 0 0% 4%;
+    /* Subtle Accent */
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
     
-    --secondary: 210 17% 95%;
-    --secondary-foreground: 0 0% 4%;
-    --muted: 210 17% 95%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
     
-    /* Status Colors */
-    --destructive: 0 84% 60%;
+    /* Status Colors - Professional */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
-    --info: 211 100% 50%;
+    --info: 221 83% 53%;
     --info-foreground: 0 0% 100%;
     
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 211 100% 50%;
+    --ring: 221 83% 53%;
     
     /* Chart Colors */
-    --chart-1: 211 100% 50%;
+    --chart-1: 221 83% 53%;
     --chart-2: 142 71% 45%;
     --chart-3: 38 92% 50%;
-    --chart-4: 0 84% 60%;
+    --chart-4: 0 72% 51%;
     --chart-5: 280 65% 60%;
     
-    /* Sidebar - Graphite Grey */
-    --sidebar: 0 0% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-hover: 0 0% 15%;
+    /* Sidebar - Clean */
+    --sidebar: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-hover: 217 33% 17%;
   }
 
   .dark {
-    /* Premium FoloCharge Theme - Dark Mode */
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
+    /* Dark Mode - Clean & Professional */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
     
-    /* Electric Blue Primary */
-    --primary: 211 100% 50%;
+    /* Professional Blue Primary */
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 211 100% 60%;
-    --primary-dark: 211 100% 40%;
     
-    /* Neon Cyan Accent */
-    --accent: 189 100% 51%;
-    --accent-foreground: 0 0% 4%;
+    /* Subtle Accent */
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
     
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 12%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
     
-    /* Status Colors */
-    --destructive: 0 84% 60%;
+    /* Status Colors - Professional */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
-    --info: 211 100% 50%;
+    --info: 221 83% 53%;
     --info-foreground: 0 0% 100%;
     
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 211 100% 50%;
+    --border: 217 33% 24%;
+    --input: 217 33% 24%;
+    --ring: 221 83% 53%;
     
     /* Chart Colors */
-    --chart-1: 211 100% 50%;
+    --chart-1: 221 83% 53%;
     --chart-2: 142 71% 45%;
     --chart-3: 38 92% 50%;
-    --chart-4: 0 84% 60%;
+    --chart-4: 0 72% 51%;
     --chart-5: 280 65% 60%;
     
-    /* Sidebar - Graphite Grey */
-    --sidebar: 0 0% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-hover: 0 0% 15%;
+    /* Sidebar - Clean */
+    --sidebar: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-hover: 217 33% 17%;
   }
 }
 
@@ -120,10 +114,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Premium FoloCharge Animations */
+/* Minimal Animations - Only Essential */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -136,7 +131,7 @@ All colors MUST be HSL.
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -144,177 +139,42 @@ All colors MUST be HSL.
   }
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
-  }
-}
-
 @layer utilities {
+  /* Subtle Animations */
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.3s ease-out;
   }
   
   .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
+    animation: slideUp 0.4s ease-out;
   }
   
-  .animate-slide-in {
-    animation: slideIn 0.5s ease-out;
-  }
-  
-  .animate-pulse-slow {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .animate-shimmer {
-    animation: shimmer 2s infinite linear;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 100%
-    );
-    background-size: 1000px 100%;
-  }
-
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite;
-  }
-  
-  /* Premium Card Hover Effect */
+  /* Clean Card Styles */
   .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
   }
   
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
-  /* Gradient Text */
-  .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  .gradient-text-primary {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  
-  /* Premium Shadow */
-  .shadow-premium {
-    box-shadow: 0 10px 30px -10px rgba(0, 123, 255, 0.3);
-  }
-
-  .shadow-premium-lg {
-    box-shadow: 0 20px 40px -15px rgba(0, 123, 255, 0.4);
-  }
-
-  .shadow-glow {
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3), 0 0 40px rgba(0, 123, 255, 0.1);
-  }
-  
-  /* Smooth Transition */
-  .transition-smooth {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Glass Effect */
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Premium Gradient Backgrounds */
-  .bg-gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-  }
-
-  .bg-gradient-primary-soft {
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
-  }
-
-  .bg-gradient-radial {
-    background: radial-gradient(circle at top right, hsl(var(--primary) / 0.1), transparent 50%);
-  }
-
-  /* Premium Border */
-  .border-gradient {
-    border: 1px solid transparent;
-    background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
-                linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))) border-box;
-  }
-
-  /* Hover Lift Effect */
-  .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Scrollbar Styling */
+  /* Professional Scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
     background: hsl(var(--muted));
-    border-radius: 4px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.3);
-    border-radius: 4px;
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.5);
+    background: hsl(var(--muted-foreground) / 0.5);
   }
 }
-
 

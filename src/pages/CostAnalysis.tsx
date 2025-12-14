@@ -50,7 +50,7 @@ export default function CostAnalysis() {
   };
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -68,7 +68,7 @@ export default function CostAnalysis() {
       </div>
 
       {!isProcessed ? (
-        <Card className="shadow-premium">
+        <Card className="">
           <CardContent className="pt-6">
             <div className="text-center py-12">
               <Zap className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
@@ -82,7 +82,7 @@ export default function CostAnalysis() {
       ) : (
         <>
           {/* Cost Parameters */}
-          <Card className="shadow-premium">
+          <Card className="">
             <CardHeader>
               <CardTitle>Revenue Parameters</CardTitle>
               <CardDescription>
@@ -123,7 +123,7 @@ export default function CostAnalysis() {
 
           {/* Revenue Loss Summary */}
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Downtime</CardTitle>
                 <Clock className="h-4 w-4 text-muted-foreground" />
@@ -136,7 +136,7 @@ export default function CostAnalysis() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Daily Revenue Loss</CardTitle>
                 <TrendingDown className="h-4 w-4 text-destructive" />
@@ -151,7 +151,7 @@ export default function CostAnalysis() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Monthly Revenue Loss</CardTitle>
                 <DollarSign className="h-4 w-4 text-destructive" />
@@ -168,7 +168,7 @@ export default function CostAnalysis() {
           </div>
 
           {/* Cost Breakdown by Fault Type */}
-          <Card className="shadow-premium">
+          <Card className="">
             <CardHeader>
               <CardTitle>Top 5 Costliest Fault Types</CardTitle>
               <CardDescription>
@@ -219,7 +219,7 @@ export default function CostAnalysis() {
           </Card>
 
           {/* Financial Summary */}
-          <Card className="shadow-premium bg-primary/5 border-primary/20">
+          <Card className=" bg-primary/5 border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-primary" />

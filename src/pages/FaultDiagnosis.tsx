@@ -26,7 +26,7 @@ export default function FaultDiagnosis() {
   const lowSeverityCount = globalParsedLogsData.filter(f => f.severity === 'Low').length;
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -50,7 +50,7 @@ export default function FaultDiagnosis() {
       </div>
 
       {!isProcessed ? (
-        <Card className="shadow-premium">
+        <Card className="">
           <CardContent className="pt-6">
             <div className="text-center py-12">
               <Zap className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
@@ -65,7 +65,7 @@ export default function FaultDiagnosis() {
         <>
           {/* Summary Cards */}
           <div className="grid gap-6 md:grid-cols-4">
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Faults</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-muted-foreground" />
@@ -78,7 +78,7 @@ export default function FaultDiagnosis() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">High Severity</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-destructive" />
@@ -91,7 +91,7 @@ export default function FaultDiagnosis() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Medium Severity</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-yellow-500" />
@@ -104,7 +104,7 @@ export default function FaultDiagnosis() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Low Severity</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-muted-foreground" />
@@ -119,7 +119,7 @@ export default function FaultDiagnosis() {
           </div>
 
           {/* Fault Details Table */}
-          <Card className="shadow-premium">
+          <Card className="">
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl">Fault Details</CardTitle>
               <CardDescription className="text-base">
@@ -140,7 +140,7 @@ export default function FaultDiagnosis() {
               ) : (
                 <div className="space-y-4">
                   {globalParsedLogsData.map((fault, index) => (
-                    <Card key={fault.id} className="border-border/50 hover:border-primary/50 transition-colors">
+                    <Card key={fault.id} className="border-border/50 hover: transition-colors">
                       <CardContent className="p-6">
                         {/* Header Row - Basic Info */}
                         <div className="flex flex-wrap items-start gap-4 pb-4 border-b border-border/30">

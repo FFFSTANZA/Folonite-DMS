@@ -45,7 +45,7 @@ export default function PredictiveFailure() {
   const totalEstimatedLoss = healthData.reduce((sum, h) => sum + h.estimatedLoss, 0);
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold tracking-tight">Predictive Failure Analysis</h1>
@@ -55,7 +55,7 @@ export default function PredictiveFailure() {
       </div>
 
       {!isProcessed ? (
-        <Card className="shadow-premium">
+        <Card className="">
           <CardContent className="pt-6">
             <div className="text-center py-12">
               <Zap className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
@@ -70,7 +70,7 @@ export default function PredictiveFailure() {
         <>
           {/* Summary Cards */}
           <div className="grid gap-6 md:grid-cols-4">
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Avg Health Score</CardTitle>
                 <Activity className="h-4 w-4 text-muted-foreground" />
@@ -85,7 +85,7 @@ export default function PredictiveFailure() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Critical Risk</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-destructive" />
@@ -98,7 +98,7 @@ export default function PredictiveFailure() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">High Risk</CardTitle>
                 <AlertTriangle className="h-4 w-4 text-orange-500" />
@@ -111,7 +111,7 @@ export default function PredictiveFailure() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-premium">
+            <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Estimated Loss</CardTitle>
                 <TrendingDown className="h-4 w-4 text-muted-foreground" />
@@ -126,7 +126,7 @@ export default function PredictiveFailure() {
           </div>
 
           {/* Charger Health Details */}
-          <Card className="shadow-premium">
+          <Card className="">
             <CardHeader>
               <CardTitle>Charger Health Status</CardTitle>
               <CardDescription>

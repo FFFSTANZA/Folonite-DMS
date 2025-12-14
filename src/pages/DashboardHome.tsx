@@ -33,7 +33,7 @@ export default function DashboardHome() {
   ];
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       {/* Header with Import Button */}
       <div className="flex items-start justify-between gap-4">
         <div>
@@ -56,7 +56,7 @@ export default function DashboardHome() {
 
       {/* Top Widgets - Large Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="card-hover animate-slide-up shadow-premium flex flex-col" style={{ animationDelay: '0.1s' }}>
+        <Card className="  flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Today's Faults</CardTitle>
             <Activity className="h-4 w-4 text-muted-foreground" />
@@ -74,7 +74,7 @@ export default function DashboardHome() {
           </CardContent>
         </Card>
 
-        <Card className="card-hover animate-slide-up shadow-premium flex flex-col" style={{ animationDelay: '0.2s' }}>
+        <Card className="  flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Downtime Loss</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -92,7 +92,7 @@ export default function DashboardHome() {
           </CardContent>
         </Card>
 
-        <Card className="card-hover animate-slide-up shadow-premium flex flex-col" style={{ animationDelay: '0.3s' }}>
+        <Card className="  flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Critical Alerts</CardTitle>
             <AlertTriangle className="h-4 w-4 text-destructive" />
@@ -110,7 +110,7 @@ export default function DashboardHome() {
           </CardContent>
         </Card>
 
-        <Card className="card-hover animate-slide-up shadow-premium flex flex-col" style={{ animationDelay: '0.4s' }}>
+        <Card className="  flex flex-col">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Fleet Health</CardTitle>
             <Zap className="h-4 w-4 text-muted-foreground" />
@@ -132,7 +132,7 @@ export default function DashboardHome() {
       {/* Secondary Widgets */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Top Earning Sites */}
-        <Card className="card-hover animate-slide-up flex flex-col" style={{ animationDelay: '0.5s' }}>
+        <Card className=" flex flex-col">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-success" />
@@ -163,7 +163,7 @@ export default function DashboardHome() {
         </Card>
 
         {/* Fault Distribution */}
-        <Card className="card-hover animate-slide-up flex flex-col" style={{ animationDelay: '0.6s' }}>
+        <Card className=" flex flex-col">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5 text-primary" />
@@ -197,7 +197,7 @@ export default function DashboardHome() {
         </Card>
 
         {/* Sites Needing Attention */}
-        <Card className="card-hover animate-slide-up border-destructive/50 flex flex-col" style={{ animationDelay: '0.7s' }}>
+        <Card className=" border-destructive/50 flex flex-col">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="h-5 w-5 text-destructive" />
@@ -232,7 +232,7 @@ export default function DashboardHome() {
       </div>
 
       {/* Quick Actions */}
-      <Card className="animate-slide-up" style={{ animationDelay: '0.8s' }}>
+      <Card className="">
         <CardHeader>
           <CardTitle>Quick Actions</CardTitle>
           <CardDescription>Common tasks and operations</CardDescription>

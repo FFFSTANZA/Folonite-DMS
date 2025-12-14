@@ -139,7 +139,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">{getPageTitle()}</h1>
         <p className="text-muted-foreground mt-2">{getPageDescription()}</p>
@@ -172,7 +172,7 @@ export default function Dashboard() {
             <TabsTrigger value="health">Charger Health</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="faults" className="space-y-8 mt-6 animate-slide-up">
+          <TabsContent value="faults" className="space-y-8 mt-6 ">
             <section>
               <h2 className="text-xl font-semibold mb-4">Fault Summary</h2>
               <FaultSummary
@@ -207,7 +207,7 @@ export default function Dashboard() {
             </section>
           </TabsContent>
 
-          <TabsContent value="predictive" className="space-y-6 mt-6 animate-slide-up">
+          <TabsContent value="predictive" className="space-y-6 mt-6 ">
             <section>
               <h2 className="text-xl font-semibold mb-4">Risk Overview</h2>
               <RiskSummaryPanel summary={predictiveSummary} />
@@ -218,7 +218,7 @@ export default function Dashboard() {
             </section>
           </TabsContent>
 
-          <TabsContent value="health" className="space-y-6 mt-6 animate-slide-up">
+          <TabsContent value="health" className="space-y-6 mt-6 ">
             <section>
               <h2 className="text-xl font-semibold mb-4">Risk Overview</h2>
               <RiskSummaryPanel summary={predictiveSummary} />
@@ -232,7 +232,7 @@ export default function Dashboard() {
       )}
 
       {!isProcessing && faults.length === 0 && (
-        <div className="text-center py-12 animate-slide-up">
+        <div className="text-center py-12 ">
           <p className="text-muted-foreground">
             Upload a log file to begin analysis
           </p>

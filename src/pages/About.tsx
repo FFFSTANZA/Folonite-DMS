@@ -44,7 +44,7 @@ export default function About() {
   ];
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 ">
       <div>
         <h1 className="text-4xl font-bold tracking-tight">About Folonite DMS</h1>
         <p className="text-muted-foreground mt-2">
@@ -53,7 +53,7 @@ export default function About() {
       </div>
 
       {/* Hero Card */}
-      <Card className="card-hover animate-slide-up border-primary/50 shadow-premium">
+      <Card className="  ">
         <CardHeader>
           <div className="flex items-center gap-3 mb-2">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -80,9 +80,9 @@ export default function About() {
       </Card>
 
       {/* Stats */}
-      <div className="grid gap-4 md:grid-cols-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+      <div className="grid gap-4 md:grid-cols-4 ">
         {stats.map((stat, index) => (
-          <Card key={index} className="card-hover text-center">
+          <Card key={index} className="text-center">
             <CardContent className="pt-6">
               <div className="text-3xl font-bold text-primary">{stat.value}</div>
               <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
@@ -92,7 +92,7 @@ export default function About() {
       </div>
 
       {/* Features */}
-      <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.2s' }}>
+      <Card className="">
         <CardHeader>
           <CardTitle>Key Features</CardTitle>
           <CardDescription>What makes Folonite DMS the best choice for EV operators</CardDescription>
@@ -118,7 +118,7 @@ export default function About() {
       </Card>
 
       {/* Modules Overview */}
-      <Card className="card-hover animate-slide-up" style={{ animationDelay: '0.3s' }}>
+      <Card className="">
         <CardHeader>
           <CardTitle>Complete Solution</CardTitle>
           <CardDescription>Five integrated modules for comprehensive operations management</CardDescription>
@@ -166,7 +166,7 @@ export default function About() {
       </Card>
 
       {/* Built By */}
-      <Card className="card-hover animate-slide-up border-accent/50" style={{ animationDelay: '0.4s' }}>
+      <Card className=" ">
         <CardContent className="pt-6 text-center">
           <p className="text-sm text-muted-foreground mb-2">Built by</p>
           <h2 className="text-3xl font-bold gradient-text">Folonite</h2>
@@ -177,7 +177,7 @@ export default function About() {
       </Card>
 
       {/* Version Info */}
-      <div className="text-center text-sm text-muted-foreground animate-slide-up" style={{ animationDelay: '0.5s' }}>
+      <div className="text-center text-sm text-muted-foreground ">
         <p>Folonite DMS v1.0 • 2025 • Made for Indian EV Operators</p>
       </div>
     </div>

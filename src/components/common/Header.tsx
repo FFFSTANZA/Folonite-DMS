@@ -18,75 +18,64 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo Section */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-3 group"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/30 transition-all duration-300" />
-              <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                <Zap className="h-6 w-6 text-white" fill="white" />
-              </div>
+            <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center">
+              <Zap className="h-5 w-5 text-primary-foreground" fill="currentColor" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+              <span className="text-lg font-semibold text-foreground">
                 Folonite DMS
               </span>
-              <span className="text-[10px] text-muted-foreground font-medium tracking-wider">
+              <span className="text-[10px] text-muted-foreground font-medium tracking-wide">
                 DIAGNOSTIC MANAGEMENT SYSTEM
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation - Always visible on desktop */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navigation.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 className={`
-                  relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
+                  px-3 py-2 text-sm font-medium rounded-md transition-colors
                   ${isActive(item.path)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                   }
                 `}
               >
-                {isActive(item.path) && (
-                  <span className="absolute inset-0 bg-primary/10 rounded-lg" />
-                )}
-                <span className="relative">{item.name}</span>
-                {isActive(item.path) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
-                )}
+                {item.name}
               </Link>
             ))}
           </div>
 
-          {/* Desktop Actions - Always visible on desktop */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-2">
             <Button
               variant="ghost"
               size="sm"
-              className="text-muted-foreground hover:text-foreground"
               asChild
             >
               <Link to="/help">Help</Link>
             </Button>
             <Button
               size="sm"
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-lg"
               asChild
             >
               <Link to="/about">About</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button - Only visible on mobile */}
+          {/* Mobile Menu */}
           <div className="md:hidden flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
