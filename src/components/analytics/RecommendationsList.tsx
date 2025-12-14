@@ -39,7 +39,7 @@ export function RecommendationsList({ recommendations }: RecommendationsListProp
       case 'high':
         return <Badge variant="destructive">High Priority</Badge>;
       case 'medium':
-        return <Badge className="bg-yellow-600">Medium Priority</Badge>;
+        return <Badge className="bg-muted">Medium Priority</Badge>;
       case 'low':
         return <Badge variant="secondary">Low Priority</Badge>;
       default:

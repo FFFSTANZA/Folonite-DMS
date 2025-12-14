@@ -18,10 +18,10 @@ interface SiteAnalyticsTableProps {
 export function SiteAnalyticsTable({ sites }: SiteAnalyticsTableProps) {
   const getUtilizationBadge = (utilization: number) => {
     if (utilization >= 60) {
-      return <Badge className="bg-green-600">High</Badge>;
+      return <Badge className="bg-primary">High</Badge>;
     }
     if (utilization >= 30) {
-      return <Badge className="bg-yellow-600">Medium</Badge>;
+      return <Badge className="bg-muted">Medium</Badge>;
     }
     return <Badge variant="destructive">Low</Badge>;
   };
@@ -54,9 +54,9 @@ export function SiteAnalyticsTable({ sites }: SiteAnalyticsTableProps) {
                   <TableCell className="text-right">
                     <div className="flex items-center justify-end gap-1">
                       {site.totalRevenue >= 10000 ? (
-                        <TrendingUp className="h-3 w-3 text-green-600" />
+                        <TrendingUp className="h-3 w-3 text-primary" />
                       ) : (
-                        <TrendingDown className="h-3 w-3 text-red-600" />
+                        <TrendingDown className="h-3 w-3 text-destructive" />
                       )}
                       ₹{site.totalRevenue.toLocaleString('en-IN')}
                     </div>

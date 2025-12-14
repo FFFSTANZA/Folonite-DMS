@@ -18,9 +18,9 @@ export function ChargerAnalyticsTable({ chargers }: ChargerAnalyticsTableProps) 
   const getPerformanceBadge = (performance: string) => {
     switch (performance) {
       case 'good':
-        return <Badge className="bg-green-600">Good</Badge>;
+        return <Badge className="bg-primary">Good</Badge>;
       case 'low':
-        return <Badge className="bg-yellow-600">Low</Badge>;
+        return <Badge className="bg-muted">Low</Badge>;
       case 'dead':
         return <Badge variant="destructive">Dead</Badge>;
       case 'underutilized':

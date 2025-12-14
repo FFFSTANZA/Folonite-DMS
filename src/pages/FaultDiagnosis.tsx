@@ -13,7 +13,7 @@ export default function FaultDiagnosis() {
       case 'High':
         return <Badge variant="destructive">High</Badge>;
       case 'Medium':
-        return <Badge className="bg-yellow-500 text-white">Medium</Badge>;
+        return <Badge variant="secondary">Medium</Badge>;
       case 'Low':
         return <Badge variant="secondary">Low</Badge>;
       default:
@@ -94,10 +94,10 @@ export default function FaultDiagnosis() {
             <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Medium Severity</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-yellow-500" />
+                <AlertTriangle className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-yellow-600">{mediumSeverityCount}</div>
+                <div className="text-3xl font-bold text-muted-foreground">{mediumSeverityCount}</div>
                 <p className="text-xs text-muted-foreground mt-1">
                   Monitor closely
                 </p>
@@ -199,7 +199,7 @@ export default function FaultDiagnosis() {
                           {/* Root Cause */}
                           <div className="space-y-2">
                             <div className="flex items-center gap-2">
-                              <div className="h-1 w-1 rounded-full bg-yellow-500" />
+                              <div className="h-1 w-1 rounded-full bg-muted" />
                               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                                 Root Cause
                               </h4>
@@ -212,7 +212,7 @@ export default function FaultDiagnosis() {
                           {/* Resolution */}
                           <div className="space-y-2">
                             <div className="flex items-center gap-2">
-                              <div className="h-1 w-1 rounded-full bg-green-500" />
+                              <div className="h-1 w-1 rounded-full bg-primary" />
                               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                                 Resolution
                               </h4>

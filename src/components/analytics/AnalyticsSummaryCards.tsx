@@ -12,19 +12,19 @@ export function AnalyticsSummaryCards({ summary }: AnalyticsSummaryCardsProps) {
       title: 'Total Sites',
       value: summary.totalSites,
       icon: Building2,
-      color: 'text-blue-600',
+      color: 'text-primary',
     },
     {
       title: 'Total Chargers',
       value: summary.totalChargers,
       icon: Zap,
-      color: 'text-yellow-600',
+      color: 'text-muted-foreground',
     },
     {
       title: 'Total Revenue',
       value: `₹${summary.totalRevenue.toLocaleString('en-IN')}`,
       icon: IndianRupee,
-      color: 'text-green-600',
+      color: 'text-primary',
     },
     {
       title: 'Total Energy',
@@ -42,7 +42,7 @@ export function AnalyticsSummaryCards({ summary }: AnalyticsSummaryCardsProps) {
       title: 'Issues',
       value: `${summary.deadChargers + summary.underutilizedChargers}`,
       icon: AlertTriangle,
-      color: 'text-red-600',
+      color: 'text-destructive',
       subtitle: `${summary.deadChargers} dead, ${summary.underutilizedChargers} underutilized`,
     },
   ];

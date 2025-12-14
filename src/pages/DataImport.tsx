@@ -75,8 +75,8 @@ export default function DataImport() {
         <Card className="">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
-                <AlertCircle className="h-5 w-5 text-yellow-500" />
+              <div className="h-10 w-10 rounded-lg bg-muted/10 flex items-center justify-center">
+                <AlertCircle className="h-5 w-5 text-muted-foreground" />
               </div>
               <CardTitle className="text-lg">Important Notes</CardTitle>
             </div>
@@ -84,15 +84,15 @@ export default function DataImport() {
           <CardContent>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                <div className="h-1.5 w-1.5 rounded-full bg-muted" />
                 Files are processed locally
               </li>
               <li className="flex items-center gap-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                <div className="h-1.5 w-1.5 rounded-full bg-muted" />
                 No data is stored permanently
               </li>
               <li className="flex items-center gap-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                <div className="h-1.5 w-1.5 rounded-full bg-muted" />
                 Session-based analysis only
               </li>
             </ul>

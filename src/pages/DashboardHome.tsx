@@ -45,7 +45,7 @@ export default function DashboardHome() {
         <Button 
           asChild
           size="lg"
-          className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-lg gap-2"
+          className="gap-2"
         >
           <Link to="/data-import">
             <Upload className="h-5 w-5" />

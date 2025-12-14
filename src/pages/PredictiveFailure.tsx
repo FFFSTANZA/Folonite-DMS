@@ -12,9 +12,9 @@ export default function PredictiveFailure() {
       case 'Critical':
         return <Badge variant="destructive" className="gap-1"><AlertTriangle className="h-3 w-3" />Critical</Badge>;
       case 'High':
-        return <Badge className="bg-orange-500 text-white gap-1"><AlertTriangle className="h-3 w-3" />High</Badge>;
+        return <Badge variant="destructive" className="gap-1"><AlertTriangle className="h-3 w-3" />High</Badge>;
       case 'Medium':
-        return <Badge className="bg-yellow-500 text-white gap-1"><Activity className="h-3 w-3" />Medium</Badge>;
+        return <Badge variant="secondary" className="gap-1"><Activity className="h-3 w-3" />Medium</Badge>;
       case 'Low':
         return <Badge variant="secondary" className="gap-1"><Activity className="h-3 w-3" />Low</Badge>;
       default:
@@ -23,17 +23,17 @@ export default function PredictiveFailure() {
   };
 
   const getHealthColor = (score: number) => {
-    if (score >= 70) return 'text-green-600';
-    if (score >= 50) return 'text-yellow-600';
-    if (score >= 30) return 'text-orange-600';
-    return 'text-red-600';
+    if (score >= 70) return 'text-primary';
+    if (score >= 50) return 'text-muted-foreground';
+    if (score >= 30) return 'text-destructive';
+    return 'text-destructive';
   };
 
   const getProgressColor = (score: number) => {
-    if (score >= 70) return 'bg-green-600';
-    if (score >= 50) return 'bg-yellow-600';
-    if (score >= 30) return 'bg-orange-600';
-    return 'bg-red-600';
+    if (score >= 70) return 'bg-primary';
+    if (score >= 50) return 'bg-muted';
+    if (score >= 30) return 'bg-destructive';
+    return 'bg-destructive';
   };
 
   // Summary stats
@@ -101,10 +101,10 @@ export default function PredictiveFailure() {
             <Card className="">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">High Risk</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-orange-500" />
+                <AlertTriangle className="h-4 w-4 text-destructive" />
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-orange-600">{highCount}</div>
+                <div className="text-3xl font-bold text-destructive">{highCount}</div>
                 <p className="text-xs text-muted-foreground mt-1">
                   Chargers require monitoring
                 </p>
