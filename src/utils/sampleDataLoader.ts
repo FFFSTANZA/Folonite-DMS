@@ -34,7 +34,7 @@ const faultTypes: FaultType[] = [
   'Repeated soft restarts',
 ];
 
-const severityLevels: SeverityLevel[] = ['High', 'Medium', 'Low'];
+const severityLevels: SeverityLevel[] = ['Critical', 'High', 'Medium', 'Low'];
 
 const connectorIds = [
   'CHG-MUM-01',
@@ -45,39 +45,136 @@ const connectorIds = [
   'CHG-BLR-02',
   'CHG-HYD-01',
   'CHG-CHN-01',
+  'CHG-PUN-01',
+  'CHG-KOL-01',
 ];
 
 function generateSampleFaults(): FaultAnalysis[] {
   const faults: FaultAnalysis[] = [];
   const now = Date.now();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  for (let i = 0; i < 25; i++) {
+  // Generate 50 faults to ensure comprehensive data
+  for (let i = 0; i < 50; i++) {
     const faultType = faultTypes[Math.floor(Math.random() * faultTypes.length)];
-    const severity = severityLevels[Math.floor(Math.random() * severityLevels.length)];
-    const connectorId = connectorIds[Math.floor(Math.random() * connectorIds.length)];
-    const timestamp = new Date(now - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString();
+    let severity: SeverityLevel;
     
-    const downtime = severity === 'High' ? Math.random() * 8 + 4 : 
+    // Ensure we have a good mix of severities, with some Critical ones
+    if (i < 5) {
+      severity = 'Critical'; // First 5 are Critical
+    } else if (i < 15) {
+      severity = 'High'; // Next 10 are High
+    } else if (i < 30) {
+      severity = 'Medium'; // Next 15 are Medium
+    } else {
+      severity = 'Low'; // Rest are Low
+    }
+    
+    const connectorId = connectorIds[Math.floor(Math.random() * connectorIds.length)];
+    
+    // Ensure some faults are from today for "Today's Faults" metric
+    let timestamp: string;
+    if (i < 8) {
+      // First 8 faults are from today
+      const todayTime = today.getTime() + Math.random() * 24 * 60 * 60 * 1000;
+      timestamp = new Date(todayTime).toISOString();
+    } else {
+      // Rest are from the past 7 days
+      timestamp = new Date(now - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString();
+    }
+    
+    // Create recurring faults for the same charger to trigger pattern detection
+    let actualConnectorId = connectorId;
+    if (i >= 5 && i < 10) {
+      // Create recurring overheating issues for CHG-MUM-01
+      actualConnectorId = 'CHG-MUM-01';
+      faults.push({
+        id: `fault-${i + 1}`,
+        faultType: 'Overheating',
+        timestamp,
+        connectorId: actualConnectorId,
+        description: getFaultDescription('Overheating'),
+        rootCause: getRootCause('Overheating'),
+        impact: getImpact(severity),
+        severity,
+        resolution: getResolution('Overheating'),
+        downtime: Math.round((severity === 'Critical' ? Math.random() * 12 + 8 :
+                             severity === 'High' ? Math.random() * 8 + 4 : 
+                             severity === 'Medium' ? Math.random() * 4 + 1 : 
+                             Math.random() * 2) * 10) / 10,
+        logEntry: {
+          errorCode: `ERR-${Math.floor(Math.random() * 9000) + 1000}`,
+          timestamp,
+          connectorId: actualConnectorId,
+          rawData: '',
+          temperature: 85 + Math.random() * 15, // High temperature
+        },
+      });
+      continue;
+    }
+    
+    if (i >= 10 && i < 14) {
+      // Create recurring OCPP disconnect for CHG-DEL-02
+      actualConnectorId = 'CHG-DEL-02';
+      faults.push({
+        id: `fault-${i + 1}`,
+        faultType: 'OCPP network disconnect',
+        timestamp,
+        connectorId: actualConnectorId,
+        description: getFaultDescription('OCPP network disconnect'),
+        rootCause: getRootCause('OCPP network disconnect'),
+        impact: getImpact(severity),
+        severity,
+        resolution: getResolution('OCPP network disconnect'),
+        downtime: Math.round((severity === 'Critical' ? Math.random() * 12 + 8 :
+                             severity === 'High' ? Math.random() * 8 + 4 : 
+                             severity === 'Medium' ? Math.random() * 4 + 1 : 
+                             Math.random() * 2) * 10) / 10,
+        logEntry: {
+          errorCode: `ERR-${Math.floor(Math.random() * 9000) + 1000}`,
+          timestamp,
+          connectorId: actualConnectorId,
+          rawData: '',
+        },
+      });
+      continue;
+    }
+
+    const downtime = severity === 'Critical' ? Math.random() * 12 + 8 :
+                     severity === 'High' ? Math.random() * 8 + 4 : 
                      severity === 'Medium' ? Math.random() * 4 + 1 : 
                      Math.random() * 2;
+
+    // Add sensor data for some faults to trigger sensor-based severity scaling
+    const logEntry: any = {
+      errorCode: `ERR-${Math.floor(Math.random() * 9000) + 1000}`,
+      timestamp,
+      connectorId: actualConnectorId,
+      rawData: '',
+    };
+
+    // Add sensor readings for specific fault types
+    if (faultType === 'Overheating') {
+      logEntry.temperature = 70 + Math.random() * 30;
+    } else if (faultType === 'Overvoltage' || faultType === 'Low grid voltage') {
+      logEntry.voltage = faultType === 'Overvoltage' ? 450 + Math.random() * 50 : 350 - Math.random() * 50;
+    } else if (faultType === 'Overcurrent') {
+      logEntry.current = 150 + Math.random() * 100;
+    }
 
     faults.push({
       id: `fault-${i + 1}`,
       faultType,
       timestamp,
-      connectorId,
+      connectorId: actualConnectorId,
       description: getFaultDescription(faultType),
       rootCause: getRootCause(faultType),
       impact: getImpact(severity),
       severity,
       resolution: getResolution(faultType),
       downtime: Math.round(downtime * 10) / 10,
-      logEntry: {
-        errorCode: `ERR-${Math.floor(Math.random() * 9000) + 1000}`,
-        timestamp,
-        connectorId,
-        rawData: '',
-      },
+      logEntry,
     });
   }
 
@@ -119,6 +216,7 @@ function getRootCause(faultType: FaultType): string {
 }
 
 function getImpact(severity: SeverityLevel): string {
+  if (severity === 'Critical') return 'Charger completely offline, severe safety risk, immediate action required';
   if (severity === 'High') return 'Charger offline, immediate revenue loss';
   if (severity === 'Medium') return 'Reduced charging capacity, partial revenue impact';
   return 'Minor disruption, minimal revenue impact';
@@ -143,10 +241,11 @@ function getResolution(faultType: FaultType): string {
 
 function generateSampleSessions(): SessionData[] {
   const sessions: SessionData[] = [];
-  const sites = ['Mumbai Central', 'Delhi Hub', 'Bangalore Tech Park', 'Hyderabad Station', 'Chennai Port'];
+  const sites = ['Mumbai Central', 'Delhi Hub', 'Bangalore Tech Park', 'Hyderabad Station', 'Chennai Port', 'Pune Plaza', 'Kolkata Junction'];
   const now = Date.now();
 
-  for (let i = 0; i < 100; i++) {
+  // Generate 200 sessions for better revenue data
+  for (let i = 0; i < 200; i++) {
     const site = sites[Math.floor(Math.random() * sites.length)];
     const energy = Math.random() * 50 + 10;
     const duration = Math.round((energy / 7.4) * 60);
