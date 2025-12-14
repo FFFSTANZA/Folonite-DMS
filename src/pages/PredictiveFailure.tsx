@@ -23,15 +23,15 @@ export default function PredictiveFailure() {
   };
 
   const getHealthColor = (score: number) => {
-    if (score >= 70) return 'text-primary';
-    if (score >= 50) return 'text-muted-foreground';
+    if (score >= 70) return 'text-success';
+    if (score >= 50) return 'text-warning';
     if (score >= 30) return 'text-destructive';
     return 'text-destructive';
   };
 
   const getProgressColor = (score: number) => {
-    if (score >= 70) return 'bg-primary';
-    if (score >= 50) return 'bg-muted';
+    if (score >= 70) return 'bg-success';
+    if (score >= 50) return 'bg-warning';
     if (score >= 30) return 'bg-destructive';
     return 'bg-destructive';
   };
