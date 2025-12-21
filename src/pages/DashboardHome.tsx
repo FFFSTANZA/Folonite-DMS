@@ -16,15 +16,19 @@ export default function DashboardHome() {
 
   // Calculate dynamic metrics from real data
   const metrics = useMemo(() => {
-    if (!isProcessed || faults.length === 0) {
-      return {
-        todayFaults: 0,
-        todayLoss: 0,
-        monthLoss: 0,
-        criticalAlerts: 0,
-        highRiskChargers: 0,
-        avgHealthScore: 0,
-      };
+    // Default values
+    const defaultMetrics = {
+      todayFaults: 0,
+      totalFaults: 0,
+      todayLoss: 0,
+      monthLoss: 0,
+      criticalAlerts: 0,
+      highRiskChargers: 0,
+      avgHealthScore: 0,
+    };
+
+    if (!isProcessed) {
+      return defaultMetrics;
     }
 
     // Get today's date
@@ -38,6 +42,9 @@ export default function DashboardHome() {
       faultDate.setHours(0, 0, 0, 0);
       return faultDate.getTime() === todayTimestamp;
     }).length;
+
+    // Total faults count
+    const totalFaults = faults.length;
 
     // Calculate revenue loss
     const avgSessionValue = 120; // ₹120
@@ -72,6 +79,7 @@ export default function DashboardHome() {
 
     return {
       todayFaults,
+      totalFaults,
       todayLoss,
       monthLoss,
       criticalAlerts,
@@ -82,9 +90,14 @@ export default function DashboardHome() {
 
   // Calculate top sites from real data
   const topSites = useMemo(() => {
-    if (!isProcessed || siteMetrics.length === 0) {
+    if (!isProcessed) {
       return [];
     }
+    
+    if (siteMetrics.length === 0) {
+      return [];
+    }
+    
     return siteMetrics
       .sort((a, b) => b.totalRevenue - a.totalRevenue)
       .slice(0, 3)
@@ -97,7 +110,11 @@ export default function DashboardHome() {
 
   // Calculate fault distribution from real data
   const faultDistribution = useMemo(() => {
-    if (!isProcessed || faults.length === 0) {
+    if (!isProcessed) {
+      return [];
+    }
+
+    if (faults.length === 0) {
       return [];
     }
 
@@ -132,7 +149,11 @@ export default function DashboardHome() {
 
   // Get chargers needing attention from health data
   const sitesNeedingAttention = useMemo(() => {
-    if (!isProcessed || healthData.length === 0) {
+    if (!isProcessed) {
+      return [];
+    }
+
+    if (healthData.length === 0) {
       return [];
     }
 
@@ -198,13 +219,15 @@ export default function DashboardHome() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Today's Faults</CardTitle>
+              <CardTitle className="text-sm font-medium">Faults Detected</CardTitle>
               <Activity className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
-              <div className="text-3xl font-bold">{metrics.todayFaults}</div>
+              <div className="text-3xl font-bold">{metrics.totalFaults}</div>
               <p className="text-xs text-muted-foreground mt-1 flex-1">
-                Detected issues requiring attention
+                {metrics.todayFaults > 0 
+                  ? `${metrics.todayFaults} detected today` 
+                  : 'Total faults in uploaded data'}
               </p>
               <Link to="/fault-diagnosis" className="mt-3">
                 <Button variant="link" className="h-auto p-0 text-primary font-medium">
