@@ -118,7 +118,7 @@ const faultRules: FaultRule[] = [
     description: 'Internal power conversion module stopped functioning',
     rootCause: 'Component failure in AC-DC converter, damaged power electronics, or control board malfunction',
     impact: 'Charger completely non-operational until hardware repair',
-    severity: 'High',
+    severity: 'Critical',
     resolution: 'Vendor support needed immediately. Requires hardware replacement and technical expertise.',
     estimatedDowntime: 24,
     matcher: (entry) => {
@@ -151,7 +151,7 @@ const faultRules: FaultRule[] = [
     description: 'Emergency stop button was activated',
     rootCause: 'User pressed emergency stop button due to safety concern or accidental activation',
     impact: 'Immediate power cutoff to all charging operations',
-    severity: 'High',
+    severity: 'Critical',
     resolution: 'Inspect site for safety issues. Reset emergency stop button. Electrician may be required for inspection.',
     estimatedDowntime: 1,
     matcher: (entry) => {
@@ -167,7 +167,7 @@ const faultRules: FaultRule[] = [
     description: 'Main power contactor failed to open or close properly',
     rootCause: 'Mechanical wear, contactor coil failure, or welded contacts due to arc damage',
     impact: 'Unable to safely control power delivery to vehicle',
-    severity: 'High',
+    severity: 'Critical',
     resolution: 'Vendor support needed. Contactor replacement required by qualified technician.',
     estimatedDowntime: 8,
     matcher: (entry) => {

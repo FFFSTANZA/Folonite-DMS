@@ -239,13 +239,17 @@ export default function DashboardHome() {
 
           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Downtime Loss</CardTitle>
+              <CardTitle className="text-sm font-medium">Revenue Loss</CardTitle>
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
-              <div className="text-3xl font-bold">₹{metrics.todayLoss.toLocaleString()}</div>
+              <div className="text-3xl font-bold">
+                ₹{(metrics.todayLoss > 0 ? metrics.todayLoss : metrics.monthLoss).toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground mt-1 flex-1">
-                Today • ₹{metrics.monthLoss.toLocaleString()} this month
+                {metrics.todayLoss > 0 
+                  ? `Today • ₹${metrics.monthLoss.toLocaleString()} total` 
+                  : 'Total estimated loss from downtime'}
               </p>
               <Link to="/cost-analysis" className="mt-3">
                 <Button variant="link" className="h-auto p-0 text-primary font-medium">
