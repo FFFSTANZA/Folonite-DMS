@@ -64,10 +64,10 @@ export default function DashboardHome() {
     const totalDowntime = faults.reduce((sum, f) => sum + f.downtime, 0);
     const monthLoss = Math.round((totalDowntime / 24) * avgSessionValue * avgSessionsPerDay);
 
-    // Count critical and high severity faults
-    const criticalAlerts = faults.filter(f => f.severity === 'Critical').length;
+    // Count critical risk chargers (matches Predictive Failure page)
+    const criticalAlerts = healthData.filter(h => h.riskLevel === 'Critical').length;
     
-    // Count high-risk chargers
+    // Count high-risk chargers (Critical + High)
     const highRiskChargers = healthData.filter(h => 
       h.riskLevel === 'Critical' || h.riskLevel === 'High'
     ).length;
@@ -261,17 +261,17 @@ export default function DashboardHome() {
 
           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Critical Alerts</CardTitle>
+              <CardTitle className="text-sm font-medium">Critical Risk Chargers</CardTitle>
               <AlertTriangle className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
               <div className="text-3xl font-bold text-destructive">{metrics.criticalAlerts}</div>
               <p className="text-xs text-muted-foreground mt-1 flex-1">
-                {metrics.highRiskChargers} high-risk chargers detected
+                {metrics.highRiskChargers} total chargers need attention
               </p>
               <Link to="/predictive" className="mt-3">
                 <Button variant="link" className="h-auto p-0 text-destructive font-medium">
-                  View Alerts →
+                  View Analysis →
                 </Button>
               </Link>
             </CardContent>
