@@ -1,67 +1,93 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import { Zap } from "lucide-react";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-r from-amber-50 to-orange-50 border-t border-amber-200">
-      <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* ================= About Us ================= */}
-          <div>
-            {/* Title: Change to your project's "About Us" */}
-            <h3 className="text-lg font-semibold text-amber-800 mb-4">
-              {/* About Us */}
-            </h3>
-            <p className="text-gray-600">
-              {/* Fill in your "About Us" introduction here, for example: Committed to xxx, making xxx more xxx */}
+    <footer className="border-t bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center">
+                <Zap className="h-5 w-5 text-primary-foreground" fill="currentColor" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-semibold text-foreground">
+                  Folonite DMS
+                </span>
+                <span className="text-[10px] text-muted-foreground font-medium tracking-wide">
+                  DIAGNOSTIC MANAGEMENT SYSTEM
+                </span>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground max-w-md">
+              Advanced diagnostic and fault analysis platform for EV charging stations. 
+              Empowering operators with intelligent insights, predictive maintenance, and revenue optimization.
             </p>
           </div>
 
-          {/* ================= Contact Information ================= */}
+          {/* Quick Links */}
           <div>
-            {/* Title: Contact Information */}
-            <h3 className="text-lg font-semibold text-amber-800 mb-4">
-              {/* Contact Information */}
+            <h3 className="text-sm font-semibold text-foreground mb-4">
+              Quick Links
             </h3>
-            <div className="text-gray-600 space-y-2">
-              <p>
-                {/* Address: XXX Street, XXX District, XXX City, XXX Province */}
-              </p>
-              <p>
-                {/* Phone: 010-XXXXXXX */}
-              </p>
-              <p>
-                {/* Email: info@example.com */}
-              </p>
-            </div>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link to="/fault-diagnosis" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Fault Diagnosis
+                </Link>
+              </li>
+              <li>
+                <Link to="/predictive" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Predictive Analysis
+                </Link>
+              </li>
+              <li>
+                <Link to="/performance-analytics" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Performance Analytics
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* ================= Business Hours / Other Information / Can be deleted ================= */}
+          {/* Resources */}
           <div>
-            {/* Title: Can be changed to "Business Hours" or "Service Hours" */}
-            <h3 className="text-lg font-semibold text-amber-800 mb-4">
-              {/* Business Hours */}
+            <h3 className="text-sm font-semibold text-foreground mb-4">
+              Resources
             </h3>
-            <div className="text-gray-600 space-y-2">
-              <p>
-                {/* Monday to Friday: 9:00-18:00 */}
-              </p>
-              <p>
-                {/* Please check announcements for weekends and public holidays */}
-              </p>
-              <p>
-                {/* Other notes, such as "Advance booking required" */}
-              </p>
-            </div>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/help" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Help & Documentation
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
+                  About Folonite DMS
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* ================= Copyright Section ================= */}
-        <div className="mt-8 pt-8 border-t border-amber-200 text-center text-gray-600">
-          <p>
-            {/* © {currentYear} Your Company or Organization Name */}
-          </p>
+        {/* Copyright Section */}
+        <div className="mt-12 pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              {currentYear} Folonite DMS
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Built for EV charging station operators in India
+            </p>
+          </div>
         </div>
       </div>
     </footer>

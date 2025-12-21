@@ -14,9 +14,9 @@ export function VendorDetectionBanner({ banner, validationWarnings = [] }: Vendo
   const displayName = getVendorDisplayName(banner.vendor, banner.format);
 
   const getConfidenceColor = () => {
-    if (confidenceLevel === 'High') return 'text-green-600';
-    if (confidenceLevel === 'Medium') return 'text-yellow-600';
-    return 'text-orange-600';
+    if (confidenceLevel === 'High') return 'text-success';
+    if (confidenceLevel === 'Medium') return 'text-warning';
+    return 'text-destructive';
   };
 
   const getConfidenceBadgeVariant = () => {
@@ -59,7 +59,7 @@ export function VendorDetectionBanner({ banner, validationWarnings = [] }: Vendo
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <CheckCircle2 className="h-4 w-4 text-success" />
                 <span className="text-muted-foreground">
                   <span className="font-semibold text-foreground">{banner.entriesProcessed}</span> entries
                 </span>
@@ -67,7 +67,7 @@ export function VendorDetectionBanner({ banner, validationWarnings = [] }: Vendo
 
               {banner.entriesFixed > 0 && (
                 <div className="flex items-center gap-2 text-sm">
-                  <AlertTriangle className="h-4 w-4 text-yellow-600" />
+                  <AlertTriangle className="h-4 w-4 text-warning" />
                   <span className="text-muted-foreground">
                     <span className="font-semibold text-foreground">{banner.entriesFixed}</span> auto-fixed
                   </span>
@@ -75,7 +75,7 @@ export function VendorDetectionBanner({ banner, validationWarnings = [] }: Vendo
               )}
 
               <div className="flex items-center gap-2 text-sm">
-                <div className={`h-2 w-2 rounded-full ${confidenceLevel === 'High' ? 'bg-green-600' : confidenceLevel === 'Medium' ? 'bg-yellow-600' : 'bg-orange-600'}`} />
+                <div className={`h-2 w-2 rounded-full ${confidenceLevel === 'High' ? 'bg-success' : confidenceLevel === 'Medium' ? 'bg-warning' : 'bg-destructive'}`} />
                 <span className={`font-medium ${getConfidenceColor()}`}>
                   {(banner.confidence * 100).toFixed(0)}% match
                 </span>
