@@ -49,7 +49,7 @@ export default function DashboardHome() {
     // Calculate revenue loss
     const avgSessionValue = 120; // ₹120
     const avgSessionsPerDay = 14;
-    
+
     const todayDowntime = faults
       .filter(f => {
         const faultDate = new Date(f.timestamp);
@@ -57,7 +57,7 @@ export default function DashboardHome() {
         return faultDate.getTime() === todayTimestamp;
       })
       .reduce((sum, f) => sum + f.downtime, 0);
-    
+
     const todayLoss = Math.round((todayDowntime / 24) * avgSessionValue * avgSessionsPerDay);
 
     // Calculate month loss (approximate based on total faults)
@@ -66,9 +66,9 @@ export default function DashboardHome() {
 
     // Count critical risk chargers (matches Predictive Failure page)
     const criticalAlerts = healthData.filter(h => h.riskLevel === 'Critical').length;
-    
+
     // Count high-risk chargers (Critical + High)
-    const highRiskChargers = healthData.filter(h => 
+    const highRiskChargers = healthData.filter(h =>
       h.riskLevel === 'Critical' || h.riskLevel === 'High'
     ).length;
 
@@ -93,11 +93,11 @@ export default function DashboardHome() {
     if (!isProcessed) {
       return [];
     }
-    
+
     if (siteMetrics.length === 0) {
       return [];
     }
-    
+
     return siteMetrics
       .sort((a, b) => b.totalRevenue - a.totalRevenue)
       .slice(0, 3)
@@ -172,19 +172,19 @@ export default function DashboardHome() {
   }, [healthData, isProcessed]);
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-6 md:space-y-8">
       {/* Header with Import Button */}
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-4xl font-bold tracking-tight">Dashboard Overview</h1>
-          <p className="text-muted-foreground mt-2">
+      <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+        <div className="w-full sm:w-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Dashboard Overview</h1>
+          <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
             Real-time insights into your EV charging operations
           </p>
         </div>
-        <Button 
+        <Button
           asChild
           size="lg"
-          className="gap-2"
+          className="gap-2 w-full sm:w-auto"
         >
           <Link to="/data-import">
             <Upload className="h-5 w-5" />
@@ -216,7 +216,7 @@ export default function DashboardHome() {
 
       {/* Top Widgets - Large Cards */}
       {isProcessed && (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Faults Detected</CardTitle>
@@ -225,8 +225,8 @@ export default function DashboardHome() {
             <CardContent className="flex-1 flex flex-col">
               <div className="text-3xl font-bold">{metrics.totalFaults}</div>
               <p className="text-xs text-muted-foreground mt-1 flex-1">
-                {metrics.todayFaults > 0 
-                  ? `${metrics.todayFaults} detected today` 
+                {metrics.todayFaults > 0
+                  ? `${metrics.todayFaults} detected today`
                   : 'Total faults in uploaded data'}
               </p>
               <Link to="/fault-diagnosis" className="mt-3">
@@ -247,8 +247,8 @@ export default function DashboardHome() {
                 ₹{(metrics.todayLoss > 0 ? metrics.todayLoss : metrics.monthLoss).toLocaleString()}
               </div>
               <p className="text-xs text-muted-foreground mt-1 flex-1">
-                {metrics.todayLoss > 0 
-                  ? `Today • ₹${metrics.monthLoss.toLocaleString()} total` 
+                {metrics.todayLoss > 0
+                  ? `Today • ₹${metrics.monthLoss.toLocaleString()} total`
                   : 'Total estimated loss from downtime'}
               </p>
               <Link to="/cost-analysis" className="mt-3">
@@ -299,7 +299,7 @@ export default function DashboardHome() {
 
       {/* Secondary Widgets */}
       {isProcessed && (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {/* Top Earning Sites */}
           <Card className="flex flex-col">
             <CardHeader>
@@ -307,125 +307,125 @@ export default function DashboardHome() {
                 <TrendingUp className="h-5 w-5 text-success" />
                 Top Earning Sites
               </CardTitle>
-            <CardDescription>Highest revenue generators this month</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col space-y-4">
-            {topSites.length > 0 ? (
-              <>
-                <div className="space-y-4 flex-1">
-                  {topSites.map((site, index) => (
-                    <div key={index} className="flex items-center justify-between">
-                      <div>
-                        <p className="font-medium">{site.name}</p>
-                        <p className="text-xs text-muted-foreground">{site.sessions} sessions</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold text-success">₹{site.revenue.toLocaleString()}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <Link to="/performance-analytics" className="w-full">
-                  <Button variant="outline" className="w-full">
-                    View All Sites
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm text-muted-foreground">No revenue data available</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Fault Distribution */}
-        <Card className="flex flex-col">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5 text-primary" />
-              Fault Distribution
-            </CardTitle>
-            <CardDescription>Most common issues detected</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col space-y-3">
-            {faultDistribution.length > 0 ? (
-              <>
-                <div className="space-y-3 flex-1">
-                  {faultDistribution.map((fault, index) => {
-                    const maxCount = Math.max(...faultDistribution.map(f => f.count));
-                    return (
-                      <div key={index} className="space-y-1">
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="font-medium">{fault.type}</span>
-                          <span className="text-muted-foreground">{fault.count}</span>
+              <CardDescription>Highest revenue generators this month</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 flex flex-col space-y-4">
+              {topSites.length > 0 ? (
+                <>
+                  <div className="space-y-4 flex-1">
+                    {topSites.map((site, index) => (
+                      <div key={index} className="flex items-center justify-between">
+                        <div>
+                          <p className="font-medium">{site.name}</p>
+                          <p className="text-xs text-muted-foreground">{site.sessions} sessions</p>
                         </div>
-                        <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-                          <div
-                            className={`h-full ${fault.color} transition-smooth`}
-                            style={{ width: `${(fault.count / maxCount) * 100}%` }}
-                          />
+                        <div className="text-right">
+                          <p className="font-bold text-success">₹{site.revenue.toLocaleString()}</p>
                         </div>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
+                  <Link to="/performance-analytics" className="w-full">
+                    <Button variant="outline" className="w-full">
+                      View All Sites
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="text-sm text-muted-foreground">No revenue data available</p>
                 </div>
-                <Link to="/fault-diagnosis" className="w-full">
-                  <Button variant="outline" className="w-full">
-                    View All Faults
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm text-muted-foreground">No faults detected</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+              )}
+            </CardContent>
+          </Card>
 
-        {/* Sites Needing Attention */}
-        <Card className="border-destructive/50 flex flex-col">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-destructive" />
-              Immediate Attention
-            </CardTitle>
-            <CardDescription>Chargers requiring urgent action</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col space-y-3">
-            {sitesNeedingAttention.length > 0 ? (
-              <>
-                <div className="space-y-3 flex-1">
-                  {sitesNeedingAttention.map((site, index) => (
-                    <div key={index} className="flex items-start justify-between gap-2">
-                      <div className="flex-1">
-                        <p className="font-medium text-sm">{site.name}</p>
-                        <p className="text-xs text-muted-foreground">{site.issue}</p>
-                      </div>
-                      <Badge
-                        variant={site.risk === 'Critical' ? 'destructive' : 'default'}
-                        className="flex-shrink-0"
-                      >
-                        {site.risk}
-                      </Badge>
-                    </div>
-                  ))}
+          {/* Fault Distribution */}
+          <Card className="flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BarChart3 className="h-5 w-5 text-primary" />
+                Fault Distribution
+              </CardTitle>
+              <CardDescription>Most common issues detected</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 flex flex-col space-y-3">
+              {faultDistribution.length > 0 ? (
+                <>
+                  <div className="space-y-3 flex-1">
+                    {faultDistribution.map((fault, index) => {
+                      const maxCount = Math.max(...faultDistribution.map(f => f.count));
+                      return (
+                        <div key={index} className="space-y-1">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="font-medium">{fault.type}</span>
+                            <span className="text-muted-foreground">{fault.count}</span>
+                          </div>
+                          <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                            <div
+                              className={`h-full ${fault.color} transition-smooth`}
+                              style={{ width: `${(fault.count / maxCount) * 100}%` }}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <Link to="/fault-diagnosis" className="w-full">
+                    <Button variant="outline" className="w-full">
+                      View All Faults
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="text-sm text-muted-foreground">No faults detected</p>
                 </div>
-                <Link to="/predictive" className="w-full">
-                  <Button variant="destructive" className="w-full">
-                    View All Alerts
-                  </Button>
-                </Link>
-              </>
-            ) : (
-              <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm text-muted-foreground">All chargers healthy</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Sites Needing Attention */}
+          <Card className="border-destructive/50 flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <AlertTriangle className="h-5 w-5 text-destructive" />
+                Immediate Attention
+              </CardTitle>
+              <CardDescription>Chargers requiring urgent action</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 flex flex-col space-y-3">
+              {sitesNeedingAttention.length > 0 ? (
+                <>
+                  <div className="space-y-3 flex-1">
+                    {sitesNeedingAttention.map((site, index) => (
+                      <div key={index} className="flex items-start justify-between gap-2">
+                        <div className="flex-1">
+                          <p className="font-medium text-sm">{site.name}</p>
+                          <p className="text-xs text-muted-foreground">{site.issue}</p>
+                        </div>
+                        <Badge
+                          variant={site.risk === 'Critical' ? 'destructive' : 'default'}
+                          className="flex-shrink-0"
+                        >
+                          {site.risk}
+                        </Badge>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/predictive" className="w-full">
+                    <Button variant="destructive" className="w-full">
+                      View All Alerts
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="text-sm text-muted-foreground">All chargers healthy</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       )}
 
       {/* Quick Actions */}
@@ -434,7 +434,7 @@ export default function DashboardHome() {
           <CardTitle>Quick Actions</CardTitle>
           <CardDescription>Common tasks and operations</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
+        <CardContent className="flex flex-wrap gap-2 sm:gap-3">
           <Link to="/fault-diagnosis">
             <Button variant="outline" className="gap-2">
               <Activity className="h-4 w-4" />

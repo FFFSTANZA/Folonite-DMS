@@ -57,7 +57,7 @@ export default function Dashboard() {
       const alerts = detectPredictiveAlerts(faults, costParams.avgSessionValue, costParams.avgSessionsPerDay);
       const health = calculateChargerHealth(faults);
       const summary = calculatePredictiveSummary(alerts, health);
-      
+
       setPredictiveAlerts(alerts);
       setChargerHealth(health);
       setPredictiveSummary(summary);
@@ -139,17 +139,17 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight">{getPageTitle()}</h1>
-        <p className="text-muted-foreground mt-2">{getPageDescription()}</p>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">{getPageTitle()}</h1>
+        <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">{getPageDescription()}</p>
       </div>
 
       <section>
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex flex-col sm:flex-row items-start justify-between mb-3 sm:mb-4 gap-2">
           <div>
-            <h2 className="text-xl font-semibold">Upload Log File</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <h2 className="text-lg sm:text-xl font-semibold">Upload Log File</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Start by uploading your charger logs or try our sample data
             </p>
           </div>
@@ -159,22 +159,22 @@ export default function Dashboard() {
 
       {faults.length > 0 && (
         <Tabs value={getActiveTab()} className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="faults">Fault Analysis</TabsTrigger>
-            <TabsTrigger value="predictive">
+          <TabsList className="grid w-full grid-cols-3 h-auto">
+            <TabsTrigger value="faults" className="text-xs sm:text-sm">Fault Analysis</TabsTrigger>
+            <TabsTrigger value="predictive" className="text-xs sm:text-sm flex-col sm:flex-row">
               Predictive Alerts
               {predictiveAlerts.length > 0 && (
-                <span className="ml-2 bg-destructive text-destructive-foreground text-xs px-2 py-0.5 rounded-full">
+                <span className="ml-1 sm:ml-2 bg-destructive text-destructive-foreground text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
                   {predictiveAlerts.length}
                 </span>
               )}
             </TabsTrigger>
-            <TabsTrigger value="health">Charger Health</TabsTrigger>
+            <TabsTrigger value="health" className="text-xs sm:text-sm">Charger Health</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="faults" className="space-y-8 mt-6 ">
+          <TabsContent value="faults" className="space-y-6 md:space-y-8 mt-4 sm:mt-6">
             <section>
-              <h2 className="text-xl font-semibold mb-4">Fault Summary</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Fault Summary</h2>
               <FaultSummary
                 totalFaults={faults.length}
                 highSeverity={highSeverityCount}
@@ -184,7 +184,7 @@ export default function Dashboard() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-4">Cost Analysis</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Cost Analysis</h2>
               <CostAnalysis
                 costAnalysis={costAnalysis}
                 costParams={costParams}
@@ -193,12 +193,12 @@ export default function Dashboard() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-4">Detailed Analysis</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Detailed Analysis</h2>
               <FaultTable faults={faults} />
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold mb-4">Export</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Export</h2>
               <ExportButtons
                 faults={faults}
                 costAnalysis={costAnalysis}
@@ -207,9 +207,9 @@ export default function Dashboard() {
             </section>
           </TabsContent>
 
-          <TabsContent value="predictive" className="space-y-6 mt-6 ">
+          <TabsContent value="predictive" className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
             <section>
-              <h2 className="text-xl font-semibold mb-4">Risk Overview</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Risk Overview</h2>
               <RiskSummaryPanel summary={predictiveSummary} />
             </section>
 
@@ -218,9 +218,9 @@ export default function Dashboard() {
             </section>
           </TabsContent>
 
-          <TabsContent value="health" className="space-y-6 mt-6 ">
+          <TabsContent value="health" className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
             <section>
-              <h2 className="text-xl font-semibold mb-4">Risk Overview</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Risk Overview</h2>
               <RiskSummaryPanel summary={predictiveSummary} />
             </section>
 
@@ -232,8 +232,8 @@ export default function Dashboard() {
       )}
 
       {!isProcessing && faults.length === 0 && (
-        <div className="text-center py-12 ">
-          <p className="text-muted-foreground">
+        <div className="text-center py-8 sm:py-12">
+          <p className="text-muted-foreground text-sm sm:text-base">
             Upload a log file to begin analysis
           </p>
         </div>

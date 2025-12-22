@@ -4,11 +4,11 @@ import { Upload, FileText, AlertCircle } from 'lucide-react';
 
 export default function DataImport() {
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-6 md:space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-4xl font-bold tracking-tight">Data Import</h1>
-        <p className="text-muted-foreground mt-2">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Data Import</h1>
+        <p className="text-muted-foreground mt-1 sm:mt-2 text-sm sm:text-base">
           Upload charger log files for analysis and fault diagnosis
         </p>
       </div>
@@ -17,18 +17,18 @@ export default function DataImport() {
       <UniversalUpload />
 
       {/* Information Cards */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-3">
         <Card className="">
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <FileText className="h-5 w-5 text-primary" />
               </div>
-              <CardTitle className="text-lg">Supported Formats</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Supported Formats</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary" />
                 CSV - Comma-separated values
@@ -51,11 +51,11 @@ export default function DataImport() {
               <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Upload className="h-5 w-5 text-primary" />
               </div>
-              <CardTitle className="text-lg">What Happens Next</CardTitle>
+              <CardTitle className="text-base sm:text-lg">What Happens Next</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary" />
                 Automatic fault detection
@@ -78,11 +78,11 @@ export default function DataImport() {
               <div className="h-10 w-10 rounded-lg bg-muted/10 flex items-center justify-center">
                 <AlertCircle className="h-5 w-5 text-muted-foreground" />
               </div>
-              <CardTitle className="text-lg">Important Notes</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Important Notes</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-muted" />
                 Files are processed locally
@@ -103,16 +103,16 @@ export default function DataImport() {
       {/* Help Section */}
       <Card className=" border-primary/20">
         <CardHeader>
-          <CardTitle>Need Help?</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-lg sm:text-xl">Need Help?</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
             Learn more about the data import process and supported log formats
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div>
-              <h4 className="font-semibold text-sm mb-2">Required Fields in Log Files:</h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-muted-foreground">
+              <h4 className="font-semibold text-xs sm:text-sm mb-2">Required Fields in Log Files:</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <div className="h-1 w-1 rounded-full bg-primary" />
                   errorCode
@@ -147,7 +147,7 @@ export default function DataImport() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               For detailed documentation and sample log files, visit the{' '}
               <a href="/help" className="text-primary hover:underline font-medium">
                 Help & Documentation

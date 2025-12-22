@@ -29,29 +29,29 @@ export function SiteAnalyticsTable({ sites }: SiteAnalyticsTableProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Site Performance Analysis</CardTitle>
+        <CardTitle className="text-lg sm:text-xl">Site Performance Analysis</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Site ID</TableHead>
-                <TableHead className="text-right">Revenue</TableHead>
-                <TableHead className="text-right">Energy (kWh)</TableHead>
-                <TableHead className="text-right">Sessions</TableHead>
-                <TableHead className="text-right">Sessions/Day</TableHead>
-                <TableHead className="text-right">Avg Revenue</TableHead>
-                <TableHead className="text-right">Utilization</TableHead>
-                <TableHead className="text-right">Peak Hour</TableHead>
-                <TableHead className="text-right">Chargers</TableHead>
+                <TableHead className="min-w-[100px]">Site ID</TableHead>
+                <TableHead className="text-right min-w-[120px]">Revenue</TableHead>
+                <TableHead className="text-right min-w-[100px]">Energy (kWh)</TableHead>
+                <TableHead className="text-right min-w-[90px]">Sessions</TableHead>
+                <TableHead className="text-right min-w-[110px]">Sessions/Day</TableHead>
+                <TableHead className="text-right min-w-[110px]">Avg Revenue</TableHead>
+                <TableHead className="text-right min-w-[120px]">Utilization</TableHead>
+                <TableHead className="text-right min-w-[100px]">Peak Hour</TableHead>
+                <TableHead className="text-right min-w-[90px]">Chargers</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {sites.map((site) => (
                 <TableRow key={site.siteId}>
-                  <TableCell className="font-medium">{site.siteId}</TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="font-medium text-xs sm:text-sm">{site.siteId}</TableCell>
+                  <TableCell className="text-right text-xs sm:text-sm">
                     <div className="flex items-center justify-end gap-1">
                       {site.totalRevenue >= 10000 ? (
                         <TrendingUp className="h-3 w-3 text-primary" />
@@ -61,28 +61,28 @@ export function SiteAnalyticsTable({ sites }: SiteAnalyticsTableProps) {
                       ₹{site.totalRevenue.toLocaleString('en-IN')}
                     </div>
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     {site.totalEnergy.toFixed(0)}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     {site.totalSessions}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     {site.sessionsPerDay.toFixed(1)}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     ₹{site.avgSessionRevenue.toFixed(0)}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     <div className="flex items-center justify-end gap-2">
                       {site.utilizationPercent.toFixed(1)}%
                       {getUtilizationBadge(site.utilizationPercent)}
                     </div>
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     {site.peakHour}:00
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-xs sm:text-sm">
                     {site.chargerCount}
                   </TableCell>
                 </TableRow>

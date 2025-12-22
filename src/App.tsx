@@ -16,8 +16,8 @@ const App: React.FC = () => {
         </div>
 
         <Sidebar />
-        <main className="flex-1 ml-0 md:ml-64 p-4 md:p-8 transition-all duration-300">
-          <div className="mx-auto max-w-7xl">
+        <main className="flex-1 ml-0 md:ml-64 pt-16 md:pt-0 p-3 md:p-4 lg:p-8 transition-all duration-300 overflow-x-hidden w-full">
+          <div className="mx-auto max-w-7xl w-full">
             <Routes>
               {routes.map((route, index) => {
                 const Component = route.component;

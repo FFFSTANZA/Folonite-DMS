@@ -84,7 +84,7 @@ export function UniversalUpload() {
     if (isLargeFile && useOptimizer) {
       // Use chunk reader for large files
       setShowProgress(true);
-      
+
       const reader = new ChunkReader(file, {
         chunkSize: 2 * 1024 * 1024, // 2MB chunks
         onProgress: (prog) => {
@@ -118,7 +118,7 @@ export function UniversalUpload() {
         const faults = classifyFaults(optimized.entries);
 
         setProgress(prev => ({ ...prev, stage: 'complete' }));
-        
+
         // Small delay to show complete state
         await new Promise(resolve => setTimeout(resolve, 500));
         setShowProgress(false);
@@ -131,7 +131,7 @@ export function UniversalUpload() {
     } else {
       // Standard processing for small files
       let logEntries;
-      
+
       if (fileName.endsWith('.csv')) {
         logEntries = parseCSV(text);
       } else if (fileName.endsWith('.json')) {
@@ -191,7 +191,7 @@ export function UniversalUpload() {
 
       toast({
         title: 'Data Processed Successfully',
-        description: useOptimizer && optimizationStats 
+        description: useOptimizer && optimizationStats
           ? `Optimized ${optimizationStats.totalLines} lines to ${optimizationStats.cleanedLines} (${optimizationStats.sizeReductionPercent}% reduction)`
           : 'All modules have been populated with your data',
       });
@@ -228,19 +228,19 @@ export function UniversalUpload() {
 
   return (
     <>
-      <PurchaseDialog 
-        open={showPurchaseDialog} 
-        onOpenChange={setShowPurchaseDialog} 
+      <PurchaseDialog
+        open={showPurchaseDialog}
+        onOpenChange={setShowPurchaseDialog}
       />
       <OptimizationProgress open={showProgress} progress={progress} />
-      
+
       <Card className="shadow-premium">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Database className="h-5 w-5 text-primary" />
             Universal Data Import
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="py-1">
             Upload your data files once to populate all modules across the dashboard
           </CardDescription>
         </CardHeader>
@@ -256,11 +256,13 @@ export function UniversalUpload() {
                 </p>
               </div>
             </div>
-            <Switch
-              checked={useOptimizer}
-              onCheckedChange={setUseOptimizer}
-              disabled={isProcessing}
-            />
+            <div className="mt-2">
+              <Switch
+                checked={useOptimizer}
+                onCheckedChange={setUseOptimizer}
+                disabled={isProcessing}
+              />
+            </div>
           </div>
 
           {/* File Size Info */}
@@ -283,171 +285,171 @@ export function UniversalUpload() {
 
           {/* Upload Zones */}
           <div className="grid gap-4 md:grid-cols-2">
-          {/* Charger Logs Upload */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium flex items-center gap-2">
-                <FileText className="h-4 w-4 text-primary" />
-                Charger Logs
-              </label>
-              {isLogsUploaded && (
-                <Badge variant="default" className="gap-1">
-                  <CheckCircle2 className="h-3 w-3" />
-                  Uploaded
-                </Badge>
-              )}
-            </div>
-            <div className="border-2 border-dashed border-border rounded-lg p-4 hover:border-primary transition-colors">
-              <input
-                type="file"
-                accept=".csv,.txt,.json"
-                onChange={handleLogsFileSelect}
-                className="hidden"
-                id="logs-upload"
-              />
-              <label
-                htmlFor="logs-upload"
-                className="flex flex-col items-center gap-2 cursor-pointer"
-              >
-                <div className="relative">
-                  <Upload className="h-8 w-8 text-muted-foreground" />
-                  <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive flex items-center justify-center">
-                    <Lock className="h-3 w-3 text-destructive-foreground" />
+            {/* Charger Logs Upload */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-medium flex items-center gap-2">
+                  <FileText className="h-4 w-4 text-primary" />
+                  Charger Logs
+                </label>
+                {isLogsUploaded && (
+                  <Badge variant="default" className="gap-1">
+                    <CheckCircle2 className="h-3 w-3" />
+                    Uploaded
+                  </Badge>
+                )}
+              </div>
+              <div className="border-2 border-dashed border-border rounded-lg p-4 hover:border-primary transition-colors">
+                <input
+                  type="file"
+                  accept=".csv,.txt,.json"
+                  onChange={handleLogsFileSelect}
+                  className="hidden"
+                  id="logs-upload"
+                />
+                <label
+                  htmlFor="logs-upload"
+                  className="flex flex-col items-center gap-2 cursor-pointer"
+                >
+                  <div className="relative">
+                    <Upload className="h-8 w-8 text-muted-foreground" />
+                    <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive flex items-center justify-center">
+                      <Lock className="h-3 w-3 text-destructive-foreground" />
+                    </div>
                   </div>
-                </div>
-                <p className="text-sm text-center">
-                  {logsFile ? (
-                    <span className="text-primary font-medium">{logsFile.name}</span>
-                  ) : (
-                    <>
-                      <span className="text-primary font-medium">Click to upload</span>
-                      <br />
-                      <span className="text-muted-foreground">CSV, TXT, or JSON</span>
-                    </>
-                  )}
-                </p>
-              </label>
+                  <p className="text-sm text-center">
+                    {logsFile ? (
+                      <span className="text-primary font-medium">{logsFile.name}</span>
+                    ) : (
+                      <>
+                        <span className="text-primary font-medium">Click to upload</span>
+                        <br />
+                        <span className="text-muted-foreground">CSV, TXT, or JSON</span>
+                      </>
+                    )}
+                  </p>
+                </label>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                For: Fault Diagnosis, Cost Analysis, Predictive Failure
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              For: Fault Diagnosis, Cost Analysis, Predictive Failure
-            </p>
-          </div>
 
-          {/* Revenue Data Upload */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium flex items-center gap-2">
-                <DollarSign className="h-4 w-4 text-primary" />
-                Revenue Data
-              </label>
-              {isRevenueUploaded && (
-                <Badge variant="default" className="gap-1">
-                  <CheckCircle2 className="h-3 w-3" />
-                  Uploaded
-                </Badge>
-              )}
-            </div>
-            <div className="border-2 border-dashed border-border rounded-lg p-4 hover:border-primary transition-colors">
-              <input
-                type="file"
-                accept=".csv"
-                onChange={handleRevenueFileSelect}
-                className="hidden"
-                id="revenue-upload"
-              />
-              <label
-                htmlFor="revenue-upload"
-                className="flex flex-col items-center gap-2 cursor-pointer"
-              >
-                <div className="relative">
-                  <Upload className="h-8 w-8 text-muted-foreground" />
-                  <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive flex items-center justify-center">
-                    <Lock className="h-3 w-3 text-destructive-foreground" />
+            {/* Revenue Data Upload */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-medium flex items-center gap-2">
+                  <DollarSign className="h-4 w-4 text-primary" />
+                  Revenue Data
+                </label>
+                {isRevenueUploaded && (
+                  <Badge variant="default" className="gap-1">
+                    <CheckCircle2 className="h-3 w-3" />
+                    Uploaded
+                  </Badge>
+                )}
+              </div>
+              <div className="border-2 border-dashed border-border rounded-lg p-4 hover:border-primary transition-colors">
+                <input
+                  type="file"
+                  accept=".csv"
+                  onChange={handleRevenueFileSelect}
+                  className="hidden"
+                  id="revenue-upload"
+                />
+                <label
+                  htmlFor="revenue-upload"
+                  className="flex flex-col items-center gap-2 cursor-pointer"
+                >
+                  <div className="relative">
+                    <Upload className="h-8 w-8 text-muted-foreground" />
+                    <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive flex items-center justify-center">
+                      <Lock className="h-3 w-3 text-destructive-foreground" />
+                    </div>
                   </div>
-                </div>
-                <p className="text-sm text-center">
-                  {revenueFile ? (
-                    <span className="text-primary font-medium">{revenueFile.name}</span>
-                  ) : (
-                    <>
-                      <span className="text-primary font-medium">Click to upload</span>
-                      <br />
-                      <span className="text-muted-foreground">CSV format</span>
-                    </>
-                  )}
-                </p>
-              </label>
+                  <p className="text-sm text-center">
+                    {revenueFile ? (
+                      <span className="text-primary font-medium">{revenueFile.name}</span>
+                    ) : (
+                      <>
+                        <span className="text-primary font-medium">Click to upload</span>
+                        <br />
+                        <span className="text-muted-foreground">CSV format</span>
+                      </>
+                    )}
+                  </p>
+                </label>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                For: Performance Analytics (Site & Charger views)
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              For: Performance Analytics (Site & Charger views)
-            </p>
           </div>
-        </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Button
-            onClick={handleProcessAllData}
-            disabled={isProcessing || (!logsFile && !revenueFile)}
-            className="flex-1 gap-2"
-            size="lg"
-          >
-            {isProcessing ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Processing...
-              </>
-            ) : (
-              <>
-                <Database className="h-4 w-4" />
-                Process All Data
-              </>
-            )}
-          </Button>
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button
+              onClick={handleProcessAllData}
+              disabled={isProcessing || (!logsFile && !revenueFile)}
+              className="flex-1 gap-2"
+              size="lg"
+            >
+              {isProcessing ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                <>
+                  <Database className="h-4 w-4" />
+                  Process All Data
+                </>
+              )}
+            </Button>
 
-          <Button
-            onClick={handleLoadSampleData}
-            disabled={isProcessing}
-            variant="outline"
-            size="lg"
-            className="flex-1 gap-2"
-          >
-            <FileText className="h-4 w-4" />
-            Load Sample Data
-          </Button>
-        </div>
+            <Button
+              onClick={handleLoadSampleData}
+              disabled={isProcessing}
+              variant="outline"
+              size="lg"
+              className="flex-1 gap-2"
+            >
+              <FileText className="h-4 w-4" />
+              Load Sample Data
+            </Button>
+          </div>
 
-        {/* Status Indicator */}
-        {isProcessed && (
-          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
-            <div className="flex items-center gap-2 text-primary">
-              <CheckCircle2 className="h-5 w-5" />
-              <p className="font-medium">All modules populated successfully!</p>
+          {/* Status Indicator */}
+          {isProcessed && (
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
+              <div className="flex items-center gap-2 text-primary">
+                <CheckCircle2 className="h-5 w-5" />
+                <p className="font-medium">All modules populated successfully!</p>
+              </div>
+              <p className="text-sm text-muted-foreground mt-1">
+                Navigate to any module to view your analyzed data
+              </p>
             </div>
-            <p className="text-sm text-muted-foreground mt-1">
-              Navigate to any module to view your analyzed data
-            </p>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+          )}
+        </CardContent>
+      </Card>
 
-    {/* Vendor Detection Banner */}
-    {normalizationResult && (
-      <div className="mt-6">
-        <VendorDetectionBanner 
-          banner={normalizationResult.banner}
-          validationWarnings={normalizationResult.validationSummary.warnings}
-        />
-      </div>
-    )}
+      {/* Vendor Detection Banner */}
+      {normalizationResult && (
+        <div className="mt-6">
+          <VendorDetectionBanner
+            banner={normalizationResult.banner}
+            validationWarnings={normalizationResult.validationSummary.warnings}
+          />
+        </div>
+      )}
 
-    {/* Performance Dashboard */}
-    {optimizationStats && (
-      <div className="mt-6">
-        <PerformanceDashboard stats={optimizationStats} />
-      </div>
-    )}
-  </>
+      {/* Performance Dashboard */}
+      {optimizationStats && (
+        <div className="mt-6">
+          <PerformanceDashboard stats={optimizationStats} />
+        </div>
+      )}
+    </>
   );
 }

@@ -58,13 +58,24 @@ export function Sidebar() {
     <>
       {/* Mobile Menu Toggle Button */}
       <Button
-        variant="outline"
-        size="icon"
-        className="fixed top-4 left-4 z-50 md:hidden"
+        size="lg"
+        className={cn(
+          "fixed top-4 left-4 z-50 md:hidden",
+          "h-11 w-11 p-0",
+          "bg-blue-600 text-white",
+          "hover:bg-blue-700",
+          "shadow-md rounded-lg"
+        )}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
-        {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        {isMobileMenuOpen ? (
+          <X className="h-6 w-6 stroke-[2.5]" />
+        ) : (
+          <Menu className="h-6 w-6 stroke-[2.5]" />
+        )}
       </Button>
+
+
 
       {/* Overlay for mobile */}
       {isMobileMenuOpen && (
@@ -110,7 +121,7 @@ export function Sidebar() {
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
-                
+
                 return (
                   <Tooltip key={item.href} delayDuration={300}>
                     <TooltipTrigger asChild>
