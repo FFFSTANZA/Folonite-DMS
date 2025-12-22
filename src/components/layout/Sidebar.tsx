@@ -157,7 +157,7 @@ export function Sidebar() {
             </Link>
             <div className="mt-4 px-3 pt-4 border-t border-sidebar-hover">
               <p className="text-xs text-sidebar-foreground/60">
-                Built with ⚡ by <span className="font-semibold text-sidebar-foreground">Folonite</span>
+                Built by <span className="font-semibold text-sidebar-foreground">Folonite</span>
               </p>
               <p className="text-[10px] text-sidebar-foreground/40 mt-1">Version 1.0.0</p>
             </div>
