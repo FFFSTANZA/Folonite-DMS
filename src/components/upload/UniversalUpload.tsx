@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Upload, FileText, DollarSign, Loader2, CheckCircle2, Database, Zap } from 'lucide-react';
+import { Upload, FileText, DollarSign, Loader2, CheckCircle2, Database, Zap, Lock } from 'lucide-react';
 import { useGlobalData } from '@/context/DataContext';
 import { useToast } from '@/hooks/use-toast';
 import { parseCSV, parseJSON, parseTXT } from '@/utils/logParser';
@@ -18,6 +18,7 @@ import { normalizeLogFile, type NormalizationResult } from '@/utils/logNormalize
 import { OptimizationProgress } from './OptimizationProgress';
 import { PerformanceDashboard } from './PerformanceDashboard';
 import { VendorDetectionBanner } from './VendorDetectionBanner';
+import { PurchaseDialog } from '@/components/ui/PurchaseDialog';
 
 export function UniversalUpload() {
   const {
@@ -40,6 +41,7 @@ export function UniversalUpload() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [useOptimizer, setUseOptimizer] = useState(true);
   const [showProgress, setShowProgress] = useState(false);
+  const [showPurchaseDialog, setShowPurchaseDialog] = useState(false);
   const [progress, setProgress] = useState<ChunkProgress>({
     stage: 'preparing',
     currentChunk: 0,
@@ -55,23 +57,13 @@ export function UniversalUpload() {
   const { toast } = useToast();
 
   const handleLogsFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setLogsFile(file);
-      setIsLogsUploaded(false);
-      setIsProcessed(false);
-      setOptimizationStats(null);
-      setNormalizationResult(null);
-    }
+    e.preventDefault();
+    setShowPurchaseDialog(true);
   };
 
   const handleRevenueFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setRevenueFile(file);
-      setIsRevenueUploaded(false);
-      setIsProcessed(false);
-    }
+    e.preventDefault();
+    setShowPurchaseDialog(true);
   };
 
   const processLogsWithOptimizer = async (file: File) => {
@@ -236,6 +228,10 @@ export function UniversalUpload() {
 
   return (
     <>
+      <PurchaseDialog 
+        open={showPurchaseDialog} 
+        onOpenChange={setShowPurchaseDialog} 
+      />
       <OptimizationProgress open={showProgress} progress={progress} />
       
       <Card className="shadow-premium">
@@ -313,7 +309,12 @@ export function UniversalUpload() {
                 htmlFor="logs-upload"
                 className="flex flex-col items-center gap-2 cursor-pointer"
               >
-                <Upload className="h-8 w-8 text-muted-foreground" />
+                <div className="relative">
+                  <Upload className="h-8 w-8 text-muted-foreground" />
+                  <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive flex items-center justify-center">
+                    <Lock className="h-3 w-3 text-destructive-foreground" />
+                  </div>
+                </div>
                 <p className="text-sm text-center">
                   {logsFile ? (
                     <span className="text-primary font-medium">{logsFile.name}</span>
@@ -358,7 +359,12 @@ export function UniversalUpload() {
                 htmlFor="revenue-upload"
                 className="flex flex-col items-center gap-2 cursor-pointer"
               >
-                <Upload className="h-8 w-8 text-muted-foreground" />
+                <div className="relative">
+                  <Upload className="h-8 w-8 text-muted-foreground" />
+                  <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive flex items-center justify-center">
+                    <Lock className="h-3 w-3 text-destructive-foreground" />
+                  </div>
+                </div>
                 <p className="text-sm text-center">
                   {revenueFile ? (
                     <span className="text-primary font-medium">{revenueFile.name}</span>

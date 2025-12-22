@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
-import { Upload, FileText, Sparkles } from 'lucide-react';
+import { Upload, FileText, Sparkles, Lock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { PurchaseDialog } from '@/components/ui/PurchaseDialog';
 
 interface FileUploadProps {
   onFileSelect: (file: File) => void;
@@ -11,48 +12,32 @@ interface FileUploadProps {
 
 export function FileUpload({ onFileSelect, isProcessing }: FileUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
+  const [showPurchaseDialog, setShowPurchaseDialog] = useState(false);
   const { toast } = useToast();
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(true);
   }, []);
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(false);
   }, []);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(false);
-
-    const files = Array.from(e.dataTransfer.files);
-    const file = files[0];
-
-    if (!file) return;
-
-    const validExtensions = ['csv', 'json', 'txt', 'log'];
-    const extension = file.name.split('.').pop()?.toLowerCase();
-
-    if (!extension || !validExtensions.includes(extension)) {
-      toast({
-        title: 'Invalid File Type',
-        description: 'Please upload a CSV, JSON, or TXT file.',
-        variant: 'destructive'
-      });
-      return;
-    }
-
-    onFileSelect(file);
-  }, [onFileSelect, toast]);
+    setShowPurchaseDialog(true);
+  }, []);
 
   const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      onFileSelect(file);
-    }
-  }, [onFileSelect]);
+    e.preventDefault();
+    setShowPurchaseDialog(true);
+  }, []);
 
   const handleLoadSample = useCallback(async () => {
     try {
@@ -97,80 +82,92 @@ export function FileUpload({ onFileSelect, isProcessing }: FileUploadProps) {
   }, [onFileSelect, toast]);
 
   return (
-    <Card
-      className={`border-2 border-dashed transition-colors ${
-        isDragging ? 'border-primary bg-primary/5' : 'border-border'
-      }`}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-    >
-      <CardContent className="flex flex-col items-center justify-center py-12">
-        <div className="rounded-full bg-primary/10 p-4 mb-4">
-          {isProcessing ? (
-            <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
-          ) : (
-            <Upload className="h-8 w-8 text-primary" />
-          )}
-        </div>
+    <>
+      <PurchaseDialog 
+        open={showPurchaseDialog} 
+        onOpenChange={setShowPurchaseDialog} 
+      />
+      
+      <Card
+        className={`border-2 border-dashed transition-colors ${
+          isDragging ? 'border-primary bg-primary/5' : 'border-border'
+        }`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <CardContent className="flex flex-col items-center justify-center py-12">
+          <div className="rounded-full bg-primary/10 p-4 mb-4 relative">
+            {isProcessing ? (
+              <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
+            ) : (
+              <>
+                <Upload className="h-8 w-8 text-primary" />
+                <div className="absolute -top-1 -right-1 h-6 w-6 rounded-full bg-destructive flex items-center justify-center">
+                  <Lock className="h-3 w-3 text-destructive-foreground" />
+                </div>
+              </>
+            )}
+          </div>
 
-        <h3 className="text-lg font-semibold mb-2">
-          {isProcessing ? 'Processing Log File...' : 'Upload Charger Log File'}
-        </h3>
+          <h3 className="text-lg font-semibold mb-2">
+            {isProcessing ? 'Processing Log File...' : 'Upload Charger Log File'}
+          </h3>
 
-        <p className="text-sm text-muted-foreground mb-4 text-center max-w-md">
-          Drag and drop your log file here, or click to browse. Supports CSV, JSON, and TXT formats.
-        </p>
+          <p className="text-sm text-muted-foreground mb-4 text-center max-w-md">
+            Drag and drop your log file here, or click to browse. Supports CSV, JSON, and TXT formats.
+          </p>
 
-        <input
-          type="file"
-          id="file-upload"
-          className="hidden"
-          accept=".csv,.json,.txt,.log"
-          onChange={handleFileInput}
-          disabled={isProcessing}
-        />
-
-        <Button
-          onClick={() => document.getElementById('file-upload')?.click()}
-          disabled={isProcessing}
-        >
-          <FileText className="mr-2 h-4 w-4" />
-          Select File
-        </Button>
-
-        <div className="flex items-center gap-3 my-3">
-          <div className="flex-1 h-px bg-border" />
-          <span className="text-xs text-muted-foreground">OR</span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
-
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            onClick={handleLoadSample}
+          <input
+            type="file"
+            id="file-upload"
+            className="hidden"
+            accept=".csv,.json,.txt,.log"
+            onChange={handleFileInput}
             disabled={isProcessing}
-            className="border-primary/50 hover:bg-primary/5"
-          >
-            <Sparkles className="mr-2 h-4 w-4 text-primary" />
-            Try Sample Data
-          </Button>
+          />
 
           <Button
-            variant="outline"
-            onClick={handleLoadPredictiveSample}
+            onClick={() => document.getElementById('file-upload')?.click()}
             disabled={isProcessing}
-            className="border-orange-500/50 hover:bg-orange-500/5"
           >
-            <Sparkles className="mr-2 h-4 w-4 text-orange-600" />
-            Predictive Sample
+            <FileText className="mr-2 h-4 w-4" />
+            Select File
           </Button>
-        </div>
 
-        <p className="text-xs text-muted-foreground mt-4">
-          Supported formats: CSV, JSON, TXT
-        </p>
-      </CardContent>
-    </Card>
+          <div className="flex items-center gap-3 my-3">
+            <div className="flex-1 h-px bg-border" />
+            <span className="text-xs text-muted-foreground">OR</span>
+            <div className="flex-1 h-px bg-border" />
+          </div>
+
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={handleLoadSample}
+              disabled={isProcessing}
+              className="border-primary/50 hover:bg-primary/5"
+            >
+              <Sparkles className="mr-2 h-4 w-4 text-primary" />
+              Try Sample Data
+            </Button>
+
+            <Button
+              variant="outline"
+              onClick={handleLoadPredictiveSample}
+              disabled={isProcessing}
+              className="border-orange-500/50 hover:bg-orange-500/5"
+            >
+              <Sparkles className="mr-2 h-4 w-4 text-orange-600" />
+              Predictive Sample
+            </Button>
+          </div>
+
+          <p className="text-xs text-muted-foreground mt-4">
+            Supported formats: CSV, JSON, TXT
+          </p>
+        </CardContent>
+      </Card>
+    </>
   );
 }

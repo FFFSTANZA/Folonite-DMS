@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
-import { Upload, FileText, Sparkles } from 'lucide-react';
+import { Upload, FileText, Sparkles, Lock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { PurchaseDialog } from '@/components/ui/PurchaseDialog';
 
 interface SessionUploadProps {
   onFileSelect: (file: File) => void;
@@ -11,48 +12,32 @@ interface SessionUploadProps {
 
 export function SessionUpload({ onFileSelect, isProcessing }: SessionUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
+  const [showPurchaseDialog, setShowPurchaseDialog] = useState(false);
   const { toast } = useToast();
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(true);
   }, []);
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(false);
   }, []);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsDragging(false);
-
-    const files = Array.from(e.dataTransfer.files);
-    const file = files[0];
-
-    if (!file) return;
-
-    const validExtensions = ['csv', 'json'];
-    const extension = file.name.split('.').pop()?.toLowerCase();
-
-    if (!extension || !validExtensions.includes(extension)) {
-      toast({
-        title: 'Invalid File Type',
-        description: 'Please upload a CSV or JSON file.',
-        variant: 'destructive'
-      });
-      return;
-    }
-
-    onFileSelect(file);
-  }, [onFileSelect, toast]);
+    setShowPurchaseDialog(true);
+  }, []);
 
   const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      onFileSelect(file);
-    }
-  }, [onFileSelect]);
+    e.preventDefault();
+    setShowPurchaseDialog(true);
+  }, []);
 
   const handleLoadSample = useCallback(async () => {
     try {
@@ -76,62 +61,74 @@ export function SessionUpload({ onFileSelect, isProcessing }: SessionUploadProps
   }, [onFileSelect, toast]);
 
   return (
-    <Card
-      className={`border-2 border-dashed transition-colors ${
-        isDragging ? 'border-primary bg-primary/5' : 'border-border'
-      }`}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-    >
-      <CardContent className="flex flex-col items-center justify-center py-12">
-        <Upload className="h-12 w-12 text-muted-foreground mb-4" />
-        
-        <h3 className="text-lg font-semibold mb-2">
-          Upload Session Data
-        </h3>
-        
-        <p className="text-sm text-muted-foreground text-center mb-6 max-w-md">
-          Upload CSV or JSON file containing charging session data with fields: siteId, chargerId, connectorId, energy_kWh, sessionDurationMin, tariffINR, revenueINR, startTime, stopTime
-        </p>
+    <>
+      <PurchaseDialog 
+        open={showPurchaseDialog} 
+        onOpenChange={setShowPurchaseDialog} 
+      />
+      
+      <Card
+        className={`border-2 border-dashed transition-colors ${
+          isDragging ? 'border-primary bg-primary/5' : 'border-border'
+        }`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <CardContent className="flex flex-col items-center justify-center py-12">
+          <div className="relative mb-4">
+            <Upload className="h-12 w-12 text-muted-foreground" />
+            <div className="absolute -top-1 -right-1 h-6 w-6 rounded-full bg-destructive flex items-center justify-center">
+              <Lock className="h-3 w-3 text-destructive-foreground" />
+            </div>
+          </div>
+          
+          <h3 className="text-lg font-semibold mb-2">
+            Upload Session Data
+          </h3>
+          
+          <p className="text-sm text-muted-foreground text-center mb-6 max-w-md">
+            Upload CSV or JSON file containing charging session data with fields: siteId, chargerId, connectorId, energy_kWh, sessionDurationMin, tariffINR, revenueINR, startTime, stopTime
+          </p>
 
-        <input
-          id="session-upload"
-          type="file"
-          accept=".csv,.json"
-          className="hidden"
-          onChange={handleFileInput}
-          disabled={isProcessing}
-        />
+          <input
+            id="session-upload"
+            type="file"
+            accept=".csv,.json"
+            className="hidden"
+            onChange={handleFileInput}
+            disabled={isProcessing}
+          />
 
-        <Button
-          onClick={() => document.getElementById('session-upload')?.click()}
-          disabled={isProcessing}
-        >
-          <FileText className="mr-2 h-4 w-4" />
-          Select File
-        </Button>
+          <Button
+            onClick={() => document.getElementById('session-upload')?.click()}
+            disabled={isProcessing}
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            Select File
+          </Button>
 
-        <div className="flex items-center gap-3 my-3">
-          <div className="flex-1 h-px bg-border" />
-          <span className="text-xs text-muted-foreground">OR</span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
+          <div className="flex items-center gap-3 my-3">
+            <div className="flex-1 h-px bg-border" />
+            <span className="text-xs text-muted-foreground">OR</span>
+            <div className="flex-1 h-px bg-border" />
+          </div>
 
-        <Button
-          variant="outline"
-          onClick={handleLoadSample}
-          disabled={isProcessing}
-          className="border-primary/50 hover:bg-primary/5"
-        >
-          <Sparkles className="mr-2 h-4 w-4 text-primary" />
-          Try Sample Data
-        </Button>
+          <Button
+            variant="outline"
+            onClick={handleLoadSample}
+            disabled={isProcessing}
+            className="border-primary/50 hover:bg-primary/5"
+          >
+            <Sparkles className="mr-2 h-4 w-4 text-primary" />
+            Try Sample Data
+          </Button>
 
-        <p className="text-xs text-muted-foreground mt-4">
-          Supported formats: CSV, JSON
-        </p>
-      </CardContent>
-    </Card>
+          <p className="text-xs text-muted-foreground mt-4">
+            Supported formats: CSV, JSON
+          </p>
+        </CardContent>
+      </Card>
+    </>
   );
 }
