@@ -1,0 +1,113 @@
+timestamp,errorCode,connectorId,chargerId,temperature,voltage,current,ocppStatus,transactionStopReason
+2025-12-01 07:12:34,OC_001,1,CHG-MUM-01,42,380,85,Faulted,Overcurrent during fast charging session - Tata Nexon EV
+2025-12-01 08:45:12,TEMP_003,1,CHG-MUM-01,78,400,72,Faulted,Overheating detected - ambient temp 42C
+2025-12-01 09:30:55,OV_002,2,CHG-MUM-01,44,520,65,Faulted,Overvoltage protection triggered - grid surge
+2025-12-01 11:15:42,BMS_004,3,CHG-MUM-02,38,380,50,Faulted,BMS communication timeout with MG ZS EV
+2025-12-01 14:02:18,NET_005,1,CHG-MUM-02,40,390,55,Offline,OCPP network disconnect - ISP outage in Andheri
+2025-12-01 16:45:33,LV_006,2,CHG-DEL-01,36,180,30,Faulted,Low grid voltage - Mumbai suburban grid load shedding
+2025-12-01 19:30:07,PWR_007,1,CHG-DEL-01,48,0,0,Faulted,Power module failure - ABB quantum rectifier fault
+2025-12-01 21:15:42,EV_008,3,CHG-DEL-02,35,400,60,Available,User disconnected - insufficient balance
+2025-12-02 06:45:18,ESTOP_009,1,CHG-DEL-02,38,380,0,Faulted,Emergency stop button pressed by maintenance crew
+2025-12-02 08:30:55,CONT_010,2,CHG-BLR-01,42,385,0,Faulted,Contactor relay stuck open - carbon buildup
+2025-12-02 10:15:42,RST_011,1,CHG-BLR-01,40,390,55,Faulted,3 soft restarts in 2 hours - firmware instability
+2025-12-02 13:45:30,OC_001,3,CHG-BLR-02,45,385,88,Faulted,Overcurrent - connector pin damage suspected
+2025-12-02 16:20:15,TEMP_003,1,CHG-BLR-02,82,395,68,Faulted,Critical overheating - cooling fan failure
+2025-12-02 18:05:45,OC_002,2,CHG-PUN-01,43,382,86,Faulted,Overcurrent - loose cable connection
+2025-12-02 20:30:33,TEMP_005,1,CHG-PUN-01,76,398,72,Faulted,Overheating - summer heat wave effect
+2025-12-03 07:12:18,NET_006,3,CHG-PUN-02,39,388,54,Offline,OCPP network - Jio fiber maintenance window
+2025-12-03 09:45:42,LV_007,1,CHG-PUN-02,37,175,28,Faulted,Low voltage from state electricity board
+2025-12-03 12:30:15,BMS_008,2,CHG-CHN-01,41,385,52,Faulted,BMS protocol mismatch with Hyundai Ioniq 5
+2025-12-03 15:00:33,PWR_009,1,CHG-CHN-01,50,0,0,Faulted,Power conversion module overloaded
+2025-12-03 17:45:42,OC_010,3,CHG-CHN-02,44,383,84,Faulted,Overcurrent - peak demand period
+2025-12-03 20:15:18,TEMP_011,1,CHG-CHN-02,80,400,70,Faulted,Overheating - monsoon humidity affecting vents
+2025-12-04 06:30:55,CONT_012,2,CHG-HYD-01,43,382,0,Faulted,Contactor welded shut - requires physical reset
+2025-12-04 08:45:42,ESTOP_013,1,CHG-HYD-01,39,380,0,Faulted,Emergency stop - water ingress detected
+2025-12-04 11:30:30,RST_014,3,CHG-HYD-02,41,390,55,Faulted,Repeated restarts - OCPP 1.6J timeout
+2025-12-04 14:15:18,OV_015,1,CHG-HYD-02,46,518,63,Faulted,Overvoltage - neutral wire disconnection
+2025-12-04 17:00:45,OC_016,2,CHG-KOL-01,44,385,87,Faulted,Overcurrent - simultaneous fast+slow charging
+2025-12-04 19:30:33,TEMP_017,1,CHG-KOL-01,79,398,71,Faulted,Overheating - blocked air intake by debris
+2025-12-04 22:00:15,NET_018,3,CHG-KOL-02,40,388,55,Offline,OCPP disconnect - BSNL tower maintenance
+2025-12-05 07:45:42,LV_019,1,CHG-KOL-02,36,178,29,Faulted,Low grid voltage - evening peak demand
+2025-12-05 10:15:30,BMS_020,2,CHG-AHD-01,42,380,51,Faulted,BMS handshake failed - Kia EV6 protocol issue
+2025-12-05 13:00:18,PWR_021,1,CHG-AHD-01,49,0,0,Faulted,Power module overheating - night cooling insufficient
+2025-12-05 15:45:45,OC_022,3,CHG-AHD-02,43,382,85,Faulted,Overcurrent - cable insulation degradation
+2025-12-05 18:30:33,TEMP_023,1,CHG-AHD-02,77,396,69,Faulted,Overheating - enclosure ventilation blocked
+2025-12-06 06:15:18,OC_001,1,CHG-MUM-01,41,380,84,Faulted,Overcurrent protection activated
+2025-12-06 09:00:45,TEMP_003,2,CHG-MUM-01,76,400,70,Faulted,Overheating - summer heat effect
+2025-12-06 11:30:33,PWR_007,1,CHG-MUM-02,48,0,0,Faulted,Power module hardware failure - vendor notified
+2025-12-06 14:15:18,LV_006,3,CHG-DEL-01,38,178,28,Faulted,Grid voltage drop during peak hours
+2025-12-06 17:00:55,BMS_004,1,CHG-DEL-01,40,385,52,Faulted,BMS handshake failed with Tata Tigor EV
+2025-12-06 19:45:42,NET_005,2,CHG-DEL-02,41,390,54,Offline,Network connectivity lost - fiber cut
+2025-12-07 07:30:18,CONT_010,1,CHG-BLR-01,43,382,0,Faulted,Contactor malfunction - relay spring tension
+2025-12-07 10:15:45,TEMP_003,3,CHG-BLR-02,81,398,68,Faulted,High ambient temperature affecting cooling
+2025-12-07 13:00:30,OC_001,1,CHG-PUN-01,44,385,86,Faulted,Current limit exceeded during DC fast charge
+2025-12-07 15:45:15,RST_011,2,CHG-PUN-01,40,390,55,Faulted,Multiple restart cycles - firmware issue
+2025-12-07 18:30:45,OV_002,1,CHG-PUN-02,45,515,63,Faulted,Overvoltage detected from utility grid
+2025-12-07 21:15:33,ESTOP_009,3,CHG-CHN-01,38,380,0,Faulted,Emergency stop activated - visitor safety
+2025-12-08 06:45:18,BMS_004,1,CHG-CHN-02,42,385,50,Faulted,BMS communication error - Tata Punch EV
+2025-12-08 09:30:55,NET_005,2,CHG-HYD-01,40,388,55,Offline,OCPP network disconnect - server maintenance
+2025-12-08 12:15:42,TEMP_003,1,CHG-MUM-01,75,398,71,Faulted,Overheating - pre-monsoon heat
+2025-12-08 15:00:30,OC_001,2,CHG-MUM-01,43,382,87,Faulted,Overcurrent - damaged connector pin
+2025-12-08 17:45:18,LV_006,1,CHG-DEL-01,37,182,30,Faulted,Low grid voltage - substation maintenance
+2025-12-08 20:30:55,PWR_007,3,CHG-DEL-01,49,0,0,Faulted,Power module failure - replacement needed
+2025-12-09 07:15:42,CONT_010,1,CHG-BLR-01,42,385,0,Faulted,Contactor stuck - debris in enclosure
+2025-12-09 10:00:30,TEMP_003,2,CHG-BLR-02,83,400,68,Faulted,Critical overheating - fan motor seized
+2025-12-09 12:45:18,BMS_004,1,CHG-PUN-01,40,380,51,Faulted,BMS protocol timeout - OCPP compliance issue
+2025-12-09 15:30:55,NET_005,3,CHG-PUN-02,41,390,55,Offline,Network outage - ISP datacenter issue
+2025-12-09 18:15:42,OC_001,1,CHG-CHN-01,44,385,86,Faulted,Overcurrent - rain-induced moisture
+2025-12-09 21:00:33,RST_011,2,CHG-CHN-02,40,390,55,Faulted,Soft restart loop - hardware degradation
+2025-12-10 07:30:18,OV_002,1,CHG-HYD-01,46,520,62,Faulted,Overvoltage from capacitor bank switching
+2025-12-10 10:15:45,ESTOP_009,3,CHG-HYD-02,39,380,0,Faulted,Fire alarm triggered - building safety
+2025-12-10 13:00:30,TEMP_003,1,CHG-KOL-01,78,396,70,Faulted,Overheating - monsoon moisture in vents
+2025-12-10 15:45:18,OC_001,1,CHG-MUM-01,43,382,85,Faulted,Overcurrent - loose terminal connection
+2025-12-10 18:30:55,TEMP_003,2,CHG-MUM-02,79,398,71,Faulted,Overheating - summer ambient temp
+2025-12-10 21:15:42,LV_006,1,CHG-DEL-01,36,175,27,Faulted,Low voltage from utility transformer
+2025-12-11 07:00:30,PWR_007,3,CHG-DEL-02,50,0,0,Faulted,Power module overheating
+2025-12-11 09:45:18,BMS_004,1,CHG-BLR-01,41,385,52,Faulted,BMS mismatch - BYD Atto 3 protocol
+2025-12-11 12:30:55,CONT_010,2,CHG-BLR-02,44,382,0,Faulted,Contactor welding - high current session
+2025-12-11 15:15:42,NET_005,1,CHG-PUN-01,40,390,55,Offline,OCPP disconnect - scheduled maintenance
+2025-12-11 18:00:30,TEMP_003,3,CHG-PUN-02,81,400,68,Faulted,Overheating - blocked exhaust vent
+2025-12-11 20:45:18,OC_001,1,CHG-CHN-01,45,385,88,Faulted,Overcurrent - concurrent sessions overload
+2025-12-12 07:15:55,RST_011,2,CHG-CHN-02,40,390,55,Faulted,Restart cascade - OCPP command timeout
+2025-12-12 10:00:42,OV_002,1,CHG-HYD-01,46,518,63,Faulted,Grid overvoltage - demand response event
+2025-12-12 12:45:30,ESTOP_009,3,CHG-HYD-02,38,380,0,Faulted,Manual emergency stop - EV battery alert
+2025-12-12 15:30:18,BMS_004,1,CHG-KOL-01,42,385,51,Faulted,BMS communication lost - OCPP timeout
+2025-12-12 18:15:45,TEMP_003,1,CHG-MUM-01,76,398,70,Faulted,Overheating - enclosure insulation issue
+2025-12-12 21:00:33,OC_001,2,CHG-MUM-01,44,382,86,Faulted,Overcurrent - rain-shortened session
+2025-12-13 07:45:18,LV_006,1,CHG-DEL-01,37,180,29,Faulted,Low grid voltage - winter morning load
+2025-12-13 10:30:55,PWR_007,3,CHG-DEL-02,49,0,0,Faulted,Power module capacitor failure
+2025-12-13 13:15:42,CONT_010,1,CHG-BLR-01,43,382,0,Faulted,Contactor debounce error
+2025-12-13 16:00:30,NET_005,2,CHG-BLR-02,41,390,55,Offline,Network loss - cellular tower issue
+2025-12-13 18:45:18,TEMP_003,1,CHG-PUN-01,80,400,68,Faulted,Overheating - dust accumulation on heatsink
+2025-12-13 21:30:55,BMS_004,3,CHG-PUN-02,40,385,50,Faulted,BMS handshake timeout - EV sleeping
+2025-12-14 06:30:42,OC_001,1,CHG-CHN-01,45,385,87,Faulted,Overcurrent - damaged CCS cable
+2025-12-14 09:15:30,RST_011,2,CHG-CHN-02,41,390,55,Faulted,Repeated resets - memory leak in firmware
+2025-12-14 12:00:18,OV_002,1,CHG-HYD-01,46,516,62,Faulted,Overvoltage - utility voltage regulation issue
+2025-12-14 14:45:55,ESTOP_009,3,CHG-HYD-02,39,380,0,Faulted,Emergency stop - ground fault detected
+2025-12-14 17:30:42,TEMP_003,1,CHG-KOL-01,78,396,70,Faulted,Overheating - night cooling fan failure
+2025-12-14 20:15:30,OC_001,1,CHG-AHD-01,44,382,86,Faulted,Overcurrent - peak morning session
+2025-12-14 23:00:18,TEMP_003,2,CHG-AHD-02,77,398,71,Faulted,Overheating - summer precursor heat
+2025-12-15 07:00:55,LV_006,1,CHG-KOL-02,36,178,28,Faulted,Low voltage - industrial area load
+2025-12-15 09:45:42,PWR_007,3,CHG-DEL-02,50,0,0,Faulted,Power module IGBT failure
+2025-12-15 12:30:30,BMS_004,1,CHG-BLR-01,41,385,52,Faulted,BMS error - Mahindra XUV400 compatibility
+2025-12-15 15:15:18,CONT_010,2,CHG-BLR-02,43,382,0,Faulted,Contactor bounce - mechanical wear
+2025-12-15 18:00:55,NET_005,1,CHG-PUN-01,40,390,55,Offline,OCPP server unreachable - load balancer
+2025-12-15 20:45:42,TEMP_003,3,CHG-PUN-02,82,400,68,Faulted,Overheating - monsoon prep moisture
+2025-12-16 07:15:30,OC_001,1,CHG-CHN-01,44,385,86,Faulted,Overcurrent - dual connector simultaneous
+2025-12-16 10:00:18,RST_011,2,CHG-CHN-02,40,390,55,Faulted,Restart sequence - watchdog timer reset
+2025-12-16 12:45:55,OV_002,1,CHG-HYD-01,46,520,63,Faulted,Overvoltage - capacitor bank energization
+2025-12-16 15:30:42,ESTOP_009,3,CHG-HYD-02,38,380,0,Faulted,Manual emergency stop - EV fire alarm
+2025-12-16 18:15:30,TEMP_003,1,CHG-KOL-01,79,396,70,Faulted,Overheating - enclosure paint peeling
+2025-12-16 21:00:18,OC_001,1,CHG-MUM-01,43,382,86,Faulted,Overcurrent - early morning fast charge
+2025-12-17 07:30:55,TEMP_003,2,CHG-MUM-02,78,398,71,Faulted,Overheating - regional heat wave
+2025-12-17 10:15:42,LV_006,1,CHG-DEL-01,37,182,30,Faulted,Low grid voltage - demand response
+2025-12-17 13:00:30,PWR_007,3,CHG-DEL-02,49,0,0,Faulted,Power module thermal shutdown
+2025-12-17 15:45:18,BMS_004,1,CHG-BLR-01,41,385,52,Faulted,BMS timeout - OCPP 2.0.1 upgrade issue
+2025-12-17 18:30:55,CONT_010,2,CHG-BLR-02,44,382,0,Faulted,Contactor arc suppression failure
+2025-12-17 21:15:42,NET_005,1,CHG-PUN-01,40,390,55,Offline,Network - VPN tunnel collapse
+2025-12-18 07:00:30,TEMP_003,3,CHG-PUN-02,80,400,68,Faulted,Overheating - heat exchanger fouling
+2025-12-18 09:45:18,OC_001,1,CHG-CHN-01,45,385,88,Faulted,Overcurrent - relay degradation
+2025-12-18 12:30:55,RST_011,2,CHG-CHN-02,41,390,55,Faulted,Restart loop - power supply instability
+2025-12-18 15:15:42,OV_002,1,CHG-HYD-01,46,518,63,Faulted,Overvoltage - power factor correction
+2025-12-18 18:00:30,ESTOP_009,3,CHG-HYD-02,39,380,0,Faulted,Fire suppression system activation
+2025-12-18 20:45:18,TEMP_003,1,CHG-KOL-01,78,396,70,Faulted,Overheating - ventilation duct blockage

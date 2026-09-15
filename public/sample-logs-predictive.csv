@@ -1,0 +1,68 @@
+timestamp,errorCode,connectorId,chargerId,temperature,voltage,current,ocppStatus,transactionStopReason
+2025-12-02 08:15:23,TEMP_001,1,CHG-MUM-01,75,380,85,Faulted,Overheating detected - cooling fan slow
+2025-12-03 09:30:45,TEMP_002,1,CHG-MUM-01,78,380,82,Faulted,Overheating detected - fan speed reducing
+2025-12-04 10:45:12,TEMP_003,1,CHG-MUM-01,80,380,80,Faulted,Overheating - cooling fan bearing wear
+2025-12-05 11:20:33,TEMP_004,1,CHG-MUM-01,82,380,78,Faulted,Overheating - fan RPM dropped 20%
+2025-12-06 12:05:18,TEMP_005,1,CHG-MUM-01,85,380,75,Faulted,Critical overheating - fan failure imminent
+2025-12-07 13:15:42,TEMP_006,1,CHG-MUM-01,83,380,77,Faulted,Overheating - intermittent fan operation
+2025-12-08 14:30:55,TEMP_007,1,CHG-MUM-01,86,380,73,Faulted,Overheating - ambient temp compounding
+2025-12-09 08:00:00,TEMP_008,1,CHG-MUM-01,88,380,70,Faulted,Critical overheating - fan replacement needed
+2025-12-01 08:00:00,NET_001,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - WiFi signal weak
+2025-12-01 10:30:00,NET_002,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - router reboot needed
+2025-12-01 13:00:00,NET_003,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - ISP packet loss
+2025-12-01 15:30:00,NET_004,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - SIM card issue
+2025-12-02 08:15:00,NET_005,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - antenna damaged
+2025-12-02 11:00:00,NET_006,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - 4G tower down
+2025-12-02 13:45:00,NET_007,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - SIM data exhausted
+2025-12-03 08:30:00,NET_008,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - hardware modem fault
+2025-12-03 11:15:00,NET_009,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - DNS resolution fail
+2025-12-03 14:00:00,NET_010,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - connection timeout
+2025-12-04 09:00:00,NET_011,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - periodic failure
+2025-12-04 12:30:00,NET_012,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - SIM slot loose
+2025-12-05 08:45:00,NET_013,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - antenna corrosion
+2025-12-05 12:00:00,NET_014,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - network module aging
+2025-12-06 09:15:00,NET_015,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - frequent drops
+2025-12-06 13:30:00,NET_016,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - modem thermal shutdown
+2025-12-07 08:00:00,NET_017,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - connectivity failure
+2025-12-07 12:15:00,NET_018,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - repeated disconnection
+2025-12-08 09:30:00,NET_019,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - hardware degradation
+2025-12-08 14:00:00,NET_020,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - modem failure
+2025-12-09 08:15:00,NET_021,2,CHG-DEL-02,42,390,55,Offline,OCPP network disconnect - replace comms module
+2025-12-05 08:00:00,RST_001,1,CHG-BLR-01,40,380,60,Available,Soft restart - watchdog timer
+2025-12-05 10:30:00,RST_002,1,CHG-BLR-01,40,380,60,Available,Soft restart - watchdog timer
+2025-12-05 13:00:00,RST_003,1,CHG-BLR-01,40,380,60,Available,Soft restart - watchdog timer
+2025-12-05 15:30:00,RST_004,1,CHG-BLR-01,40,380,60,Available,Soft restart - watchdog timer
+2025-12-06 08:15:00,RST_005,1,CHG-BLR-01,40,380,60,Available,Soft restart - memory allocation error
+2025-12-06 11:00:00,RST_006,1,CHG-BLR-01,40,380,60,Available,Soft restart - stack overflow
+2025-12-06 14:00:00,RST_007,1,CHG-BLR-01,40,380,60,Available,Soft restart - processor hang
+2025-12-07 09:00:00,RST_008,1,CHG-BLR-01,40,380,60,Available,Soft restart - OCPP state machine
+2025-12-07 12:30:00,RST_009,1,CHG-BLR-01,40,380,60,Available,Soft restart - watchdog timeout
+2025-12-07 16:00:00,RST_010,1,CHG-BLR-01,40,380,60,Available,Soft restart - firmware crash loop
+2025-12-08 08:30:00,RST_011,1,CHG-BLR-01,40,380,60,Available,Soft restart - memory leak detected
+2025-12-08 12:00:00,RST_012,1,CHG-BLR-01,40,380,60,Available,Soft restart - heap exhaustion
+2025-12-08 15:30:00,RST_013,1,CHG-BLR-01,40,380,60,Available,Soft restart - processor thermal
+2025-12-09 08:00:00,RST_014,1,CHG-BLR-01,40,380,60,Available,Soft restart - system instability
+2025-12-01 08:00:00,OC_001,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - peak charging session
+2025-12-02 08:30:00,OC_002,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - cable resistance rising
+2025-12-03 09:00:00,OC_003,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - connector pin degradation
+2025-12-04 08:15:00,OC_004,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - contact resistance increase
+2025-12-05 08:45:00,OC_005,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - terminal corrosion
+2025-12-06 08:00:00,OC_006,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - moisture in connector
+2025-12-07 08:30:00,OC_007,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - insulation breakdown
+2025-12-08 09:00:00,OC_008,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - cable wear pattern
+2025-12-09 08:15:00,OC_009,1,CHG-PUN-01,44,382,86,Faulted,Overcurrent - connector replacement needed
+2025-12-01 09:00:00,PWR_001,1,CHG-CHN-01,48,385,80,Faulted,Power module - capacitor aging
+2025-12-03 09:30:00,PWR_002,1,CHG-CHN-01,49,385,78,Faulted,Power module - thermal paste drying
+2025-12-05 08:45:00,PWR_003,1,CHG-CHN-01,50,385,75,Faulted,Power module - efficiency dropping
+2025-12-07 09:15:00,PWR_004,1,CHG-CHN-01,51,385,72,Faulted,Power module - fan bearing noise
+2025-12-09 08:30:00,PWR_005,1,CHG-CHN-01,52,385,70,Faulted,Power module - replacement recommended
+2025-12-01 10:00:00,CONT_001,1,CHG-HYD-01,42,382,0,Faulted,Contactor - spring tension weakening
+2025-12-03 10:30:00,CONT_002,1,CHG-HYD-01,43,382,0,Faulted,Contactor - bounce duration increasing
+2025-12-05 09:45:00,CONT_003,1,CHG-HYD-01,43,382,0,Faulted,Contactor - weld risk elevated
+2025-12-07 10:15:00,CONT_004,1,CHG-HYD-01,44,382,0,Faulted,Contactor - mechanical wear visible
+2025-12-09 09:30:00,CONT_005,1,CHG-HYD-01,44,382,0,Faulted,Contactor - immediate replacement needed
+2025-12-01 07:30:00,LV_001,1,CHG-KOL-01,37,182,30,Faulted,Low voltage - grid instability
+2025-12-03 08:00:00,LV_002,1,CHG-KOL-01,37,178,29,Faulted,Low voltage - transformer tap issue
+2025-12-05 07:45:00,LV_003,1,CHG-KOL-01,36,175,28,Faulted,Low voltage - distribution degradation
+2025-12-07 08:15:00,LV_004,1,CHG-KOL-01,36,172,27,Faulted,Low voltage - feeder cable aging
+2025-12-09 07:30:00,LV_005,1,CHG-KOL-01,35,170,26,Faulted,Low voltage - grid infrastructure failing
