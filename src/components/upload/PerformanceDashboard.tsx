@@ -1,6 +1,6 @@
 import { Clock, Copy, FileText, Filter, Layers, TrendingDown } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { OptimizationStats } from '@/utils/logOptimizer';
 
 interface PerformanceDashboardProps {

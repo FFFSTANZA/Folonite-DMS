@@ -30,3 +30,6 @@ package-lock.json
 history/*.json
 .vite_cache
 .code-graph/
+
+# App runtime state (created by start.sh)
+.app.pid
